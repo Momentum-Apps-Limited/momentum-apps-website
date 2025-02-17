@@ -12,15 +12,17 @@
 <header>
     <nav class="navbar">
         <div class="logo">Momentum Apps</div>
+        <!-- Hamburger Icon -->
+        <button class="hamburger" aria-label="Toggle navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="help.html">Help & FAQ</a></li>
-            <li>          <a href="https://momentum-apps.com/contact">
-                Contact
-            </a></li>
-            <li>          <a href="https://momentum-apps.com">
-                More Apps
-            </a></li>
+            <li><a href="https://momentum-apps.com/contact">Contact</a></li>
+            <li><a href="https://momentum-apps.com">More Apps</a></li>
         </ul>
     </nav>
 </header>
@@ -33,7 +35,9 @@
             <span>Plan, Succeed</span>
         </h1>
         <p>
-            Stay on track with your goals and build lasting habits effortlessly. Habit Tracker - Plan, Succeed helps you stay motivated with progress tracking, streaks, reminders, and insightful reports.
+            Stay on track with your goals and build lasting habits effortlessly.
+            Habit Tracker - Plan, Succeed helps you stay motivated with progress
+            tracking, streaks, reminders, and insightful reports.
         </p>
         <!-- Google Play Badge Link -->
         <a href="#">
@@ -49,11 +53,50 @@
     </div>
 </section>
 
+<!-- Features Section -->
 <section class="features">
-    <img src="assets/images/feature-section.png" alt="Feature Section" />
+    <!-- Desktop Features -->
+    <div class="features-desktop">
+        <div class="features-image">
+            <img
+                    src="assets/images/feature-section.png"
+                    alt="Feature Example"
+            />
+        </div>
+    </div>
+
+    <!-- Mobile Features -->
+    <div class="features-mobile">
+        <h2>Stay Consistent, Stay Motivated</h2>
+
+        <div class="feature-item">
+            <img
+                    src="assets/images/mockups/appleHabitScreen.png"
+                    alt="Flexible Scheduling"
+            />
+            <p><strong>Flexible Habit Scheduling:</strong></p>
+            <p>Set daily, weekly, monthly, or custom habits that fit your lifestyle.</p>
+        </div>
+
+        <div class="feature-item">
+            <img
+                    src="assets/images/mockups/appleProgressScreen.png"
+                    alt="Track & Visualize Progress"
+            />
+            <p><strong>Track & Visualize Progress:</strong></p>
+            <p>Track and visualize your progress with habit streaks and progress tracking.</p>
+        </div>
+
+        <div class="feature-item">
+            <img
+                    src="assets/images/mockups/appleReportScreen.png"
+                    alt="Monthly Reports & Insights"
+            />
+            <p><strong>Monthly Reports & Insights:</strong></p>
+            <p>Review your performance and get insightful habit reports.</p>
+        </div>
+    </div>
 </section>
-
-
 
 <!-- Footer -->
 <footer>
@@ -63,5 +106,6 @@
     </p>
 </footer>
 
+<script src="assets/js/script.js"></script>
 </body>
 </html>

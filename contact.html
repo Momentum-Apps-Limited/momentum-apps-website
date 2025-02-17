@@ -11,9 +11,15 @@
 <body>
 <!-- Header -->
 <header>
-  <div class="container">
+  <div class="container header-container">
     <div class="logo">Momentum Apps</div>
-    <nav>
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger" id="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav id="nav-menu">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#apps">Apps</a></li>
@@ -23,27 +29,24 @@
   </div>
 </header>
 
-<!-- Hero/Image Section for Contact -->
+<!-- Contact Hero Section -->
 <section class="contact-hero">
   <div class="container contact-hero-wrapper">
-    <!-- Left column: Contact Info (if you want it displayed) -->
+    <!-- Left Column: Contact Info -->
     <div class="contact-info">
       <h2>Contact Us</h2>
       <ul>
-        <li><strong>Website:</strong>
-          <a href="https://momentum-apps.com" target="_blank" rel="noopener noreferrer">
-            momentum-apps.com
-          </a>
+        <li>
+          <strong>Website:</strong>
+          <a href="https://momentum-apps.com" target="_blank" rel="noopener noreferrer">momentum-apps.com</a>
         </li>
-        <li><strong>Email:</strong>
-          <a href="mailto:support@momentum-apps.com">
-            support@momentum-apps.com
-          </a>
+        <li>
+          <strong>Email:</strong>
+          <a href="mailto:support@momentum-apps.com">support@momentum-apps.com</a>
         </li>
       </ul>
-
     </div>
-    <!-- Right column: The phones/image -->
+    <!-- Right Column: Contact Image -->
     <div class="contact-image">
       <img src="assets/images/contact-phones.png" alt="Phones" />
     </div>
@@ -84,5 +87,7 @@
     <p>&copy; 2025 Momentum Apps Limited. All Rights Reserved.</p>
   </div>
 </footer>
+
+<script src="assets/js/script.js"></script>
 </body>
 </html>
