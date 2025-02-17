@@ -1,0 +1,238 @@
+/* Global resets and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #007BFF;
+}
+
+/* Hamburger Button Styles */
+.hamburger {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  border-radius: 3px;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-content {
+  max-width: 550px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-content h1 span {
+  color: #007BFF;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+/* Hero Image */
+.hero-image img {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Features Section Container */
+.features {
+  background-color: #fff;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem 2rem;
+}
+
+/*
+  Desktop Features
+  ================
+  This version is displayed on desktop only.
+*/
+.features-desktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Features: Left column (image) */
+.features-desktop .features-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+
+/*
+  Mobile Features
+  ===============
+  This version is displayed on mobile only. It shows separate images
+  and text blocks for each feature. It's hidden by default on larger screens.
+*/
+.features-mobile {
+  display: none; /* hidden by default on desktop */
+}
+
+.features-mobile h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #007BFF;
+  text-align: center;
+}
+
+.features-mobile .feature-item {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.features-mobile .feature-item img {
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 auto 1rem auto;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+footer a {
+  color: #007BFF;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  /* Hero Section */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .hero-content {
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+  .hero-image img {
+    width: 80%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* Navbar on Mobile */
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default */
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  /*
+    Hide the desktop feature layout and show the mobile feature layout
+    on screens <= 768px wide
+  */
+  .features-desktop {
+    display: none;
+  }
+
+  .features-mobile {
+    display: block;
+  }
+}

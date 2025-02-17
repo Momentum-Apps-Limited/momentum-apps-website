@@ -1,10 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyMap Help</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* Additional styles for the FAQ sections */
+    .faq-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    .faq-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #007BFF;
+    }
+    details {
+      margin-bottom: 1rem;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      padding: 0.5rem;
+      background-color: #f9f9f9;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+    }
+    details[open] summary {
+      margin-bottom: 0.5rem;
+    }
+    details p {
+      margin: 0.5rem 0 0 1rem;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
 
+<!-- Navigation -->
+<header>
+  <nav class="navbar">
+    <div class="logo">StudyMap</div>
+    <!-- Hamburger Icon -->
+    <button class="hamburger" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="help.html">Help & FAQ</a></li>
+      <li><a href="https://momentum-apps.com/contact">Contact</a></li>
+      <li><a href="https://momentum-apps.com">More Apps</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+  <section class="faq-section">
+
+    <h2>Getting Started</h2>
+    <details>
+      <summary>How to Use StudyMap</summary>
+      <p>Here is a quick guide on how to use StudyMap:</p>
+
+      <p>
+        <strong>Add Subjects:</strong> When creating either a Task or a Class the app will prompt you to select a Subject. Subjects should be the name of the Subject/Course you are taking. For example Mathematics, Chinese 1A, or Physical Education.
+      </p>
+      <p>
+        <strong>Add Classes:</strong> You can add classes by clicking on the Purple and White ‘+’ button and selecting ‘Create Class’. Set up your school schedule by putting in your class times.
+      </p>
+      <p>
+        <strong>Add Tasks:</strong> This can be assignments, projects, homework, exams, or just times you want to set for revision. This can be done by clicking on the Purple and White ‘+’ button and selecting ‘Create Task’. This can be one-off or repeated tasks.
+      </p>
+      <p>
+        <strong>Begin using the app:</strong> The Home Screen will display the tasks and/or classes that are due today. The Calendar will show a daily or monthly view of all your tasks and classes. Finally, the Tasks page will show a list of all your Tasks and Classes. If needed, you can edit or delete tasks and classes from here.
+      </p>
+    </details>
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Can I delete or edit one of my tasks or classes?</summary>
+      <p>
+        You can delete or edit one of your tasks or classes by navigating to the Tasks screen and clicking on the Task or Class you would like to cancel and clicking on the <strong>Edit</strong> or <strong>Delete</strong> button. If needed, you can filter by clicking on the ‘Tasks’ or ‘Classes’ buttons. You can also filter by subject by clicking on the ‘All Subjects’ button and clicking on the subject for the task or class you want to edit or delete.
+      </p>
+    </details>
+    <details>
+      <summary>How do I delete or edit a subject?</summary>
+      <p>
+        This can be done by navigating to the Profile page and then clicking <strong>‘Manage Subjects’</strong>. Here you will find a list of your subjects. Choose the subject you would like to edit or delete.
+      </p>
+      <p>
+        <strong>Please note:</strong> Deleting a subject is not reversible. This will also delete any tasks or classes attached to the subject.
+      </p>
+    </details>
+    <details>
+      <summary>How can I mark a Task as complete?</summary>
+      <p>
+        There are two ways you can mark a Task as complete:
+      </p>
+      <p>
+        <strong>Home Screen:</strong> You can mark any task that is due today as Complete simply by tapping on the task in the Home Screen. The Task will then show as Completed If you need to, tap it again to unmark it as complete.
+      </p>
+      <p>
+        <strong>Task Screen:</strong> In the Task Screen, find and tap the task that you want to mark as complete.
+      </p>
+    </details>
+
+    <!-- Data Management -->
+    <h2>Data Management</h2>
+    <details>
+      <summary>I started the app using Continue as Guest, but now I want to have an account. How can signup and keep my existing data?</summary>
+      <p>
+        This can be done by navigating to the Profile screen and clicking ‘Create an Account’. By creating an account, you can keep your data secure and accessible across your devices. It will ask you to enter your name, email address and a password of your choice.
+      </p>
+    </details>
+    <details>
+      <summary>How can I export my data to CSV?</summary>
+      <p>
+        This can be done by navigating to the Profile screen and clicking Export to CSV.
+      </p>
+      <p>
+        This will provide information relating to the Tasks and Classes you created, including Name, Subject, Start/End Dates and Times for Classes and Due Dates for Tasks. This will also include any Notes or Descriptions that were provided.
+      </p>
+    </details>
+    <details>
+      <summary>I no longer need to use StudyMap, can I delete my account or delete my data?</summary>
+      <p>
+        To delete your account that you have with us, navigate to the Profile screen, scroll down, and click on Delete your Account (or 'Delete Data' for guest accounts.) A confirmation window will appear and ask if you are sure you want to do this. Simply click Delete and your account and any associated data will be deleted.
+      </p>
+      <p>
+        This is not a reversable action. However, once the account is deleted you will be able to create a new account if you wish to do so. This can be done by signing up as normal.
+      </p>
+      <p>
+        Alternatively, you can request deletion of your account by using the <a href="https://momentum-apps.com/contact">Contact Us</a> form or emailing us at support@momentum-apps.com
+      </p>
+    </details>
+    <p>Question wasn't answered on this page? If you have any questions or need assistance please reach out by using the <a href="https://momentum-apps.com/contact">Contact Us</a> form </p>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Momentum Apps Limited. All rights reserved.</p>
+  <p>
+  <p><a href="terms.html">Terms and Conditions</a> | <a href="privacy.html">Privacy Policy</a></p>
+  </p>
+
+</footer>
+
+<script src="assets/js/script.js"></script>
 </body>
 </html>
