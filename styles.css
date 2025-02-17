@@ -145,6 +145,28 @@ section.app-section h2 {
   transform: scale(1.03);
 }
 
+.cta-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.explore-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #fff;
+    background-color: #2980b9; /* Blue color */
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.explore-btn:hover {
+    background-color: #1c5980; /* Darker blue on hover */
+    transform: scale(1.05);
+}
+
 /* CONTACT HERO SECTION */
 .contact-hero {
   background: #fff;
