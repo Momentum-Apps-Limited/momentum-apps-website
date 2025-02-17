@@ -32,11 +32,13 @@ a {
 }
 
 /* Header */
-header {
-  background: #ffffff;
-  border-bottom: 1px solid #ddd;
-  padding: 20px 0;
+header .container {
+  display: flex;                /* enables Flexbox */
+  align-items: center;          /* vertical center */
+  justify-content: space-between; /* space logo on left, nav on right */
 }
+
+/* Logo styling */
 header .logo {
   font-size: 1.8em;
   font-weight: bold;
@@ -50,18 +52,34 @@ nav ul {
   display: flex;
   gap: 20px;
 }
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* spacing between nav items */
+
+}
+
 nav li a {
   color: #2c3e50;
   font-weight: 500;
   transition: color 0.3s ease;
+  padding: 8px 0;  /* some vertical padding */
 }
+
 nav li a:hover {
   color: #2980b9;
 }
 
+ul li a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+
 /* Hero Section */
 .hero {
-  background: url('resources/images/hero-background.jpg') no-repeat center center/cover;
+  background: url('assets/images/hero-background.jpg') no-repeat center center/cover;
   min-height: 60vh;
   display: flex;
   align-items: center;
@@ -127,7 +145,52 @@ section.app-section h2 {
   transform: scale(1.03);
 }
 
-/* Contact Section */
+/* CONTACT HERO SECTION */
+.contact-hero {
+  background: #fff;
+  padding: 40px 0;
+  border-bottom: 1px solid #ddd; /* subtle divider */
+}
+
+.contact-hero-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* allows stacking on mobile */
+  gap: 20px;
+}
+
+.contact-info {
+  flex: 1; /* takes up remaining space, ensures two columns */
+  min-width: 300px;
+}
+
+.contact-info h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.contact-info ul {
+  list-style: none;
+  line-height: 1.8;
+  color: #555;
+}
+
+.contact-info li {
+  margin-bottom: 10px;
+}
+
+.contact-image {
+  flex: 1;
+  text-align: right;
+  min-width: 300px;
+}
+
+.contact-image img {
+  max-width: 80%;
+  height: auto;
+}
 #contact {
   background: #ffffff;
   margin: 40px 0;
@@ -213,6 +276,11 @@ footer {
   nav ul {
     flex-direction: column;
     align-items: center;
+  }
+
+  nav ul li a.active {
+    color: #2980b9; /* or any highlight color */
+    font-weight: 600;
   }
   .screenshots {
     flex-direction: column;

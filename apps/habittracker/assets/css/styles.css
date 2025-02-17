@@ -1,0 +1,114 @@
+/* Global resets and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #007BFF;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-content {
+  max-width: 550px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-content h1 span {
+  color: #007BFF;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+/* Hero Image */
+.hero-image img {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Features Section (Single Image) */
+.features {
+  width: 100%;
+  margin: 2rem auto;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.features img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* If you want rounded corners */
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+footer a {
+  color: #007BFF;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

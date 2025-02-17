@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Momentum Apps</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="container">
+    <div class="logo">Momentum Apps</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#apps">Apps</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero/Image Section for Contact -->
+<section class="contact-hero">
+  <div class="container contact-hero-wrapper">
+    <!-- Left column: Contact Info (if you want it displayed) -->
+    <div class="contact-info">
+      <h2>Contact Us</h2>
+      <ul>
+        <li><strong>Website:</strong>
+          <a href="https://momentum-apps.com" target="_blank" rel="noopener noreferrer">
+            momentum-apps.com
+          </a>
+        </li>
+        <li><strong>Email:</strong>
+          <a href="mailto:support@momentum-apps.com">
+            support@momentum-apps.com
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <!-- Right column: The phones/image -->
+    <div class="contact-image">
+      <img src="assets/images/contact-phones.png" alt="Phones" />
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form Section -->
+<section id="contact">
+  <div class="container">
+    <h2>Send Us a Message</h2>
+    <form action="https://formspree.io/f/mrbeangv" method="POST">
+      <label for="name">Your Name:</label>
+      <input type="text" name="name" id="name" placeholder="Your name" required>
+
+      <label for="email">Your Email:</label>
+      <input type="email" name="email" id="email" placeholder="you@example.com" required>
+
+      <label for="subject">Subject:</label>
+      <select name="subject" id="subject" required>
+        <option value="" disabled selected>Select a subject</option>
+        <option value="general">General Inquiry</option>
+        <option value="support">Support</option>
+        <option value="feedback">Feedback</option>
+        <option value="partnership">Partnership</option>
+      </select>
+
+      <label for="message">Your Message:</label>
+      <textarea name="message" id="message" placeholder="How can we help you?" required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Momentum Apps Limited. All Rights Reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
