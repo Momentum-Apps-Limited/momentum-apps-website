@@ -4,31 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
 
-    <!-- Title -->
     <title>Privacy Policy | StudyMap - Flashcards by Momentum Apps</title>
 
-    <!-- Meta Description -->
-    <meta name="description" content="Read the privacy policy for StudyMap - Flashcards by Momentum Apps. Learn how we collect, use, and protect your personal data and privacy." />
+    <meta name="description" content="Read the privacy policy for StudyMap - Flashcards by Momentum Apps. Learn how we handle analytics, purchase verification, and your local flashcard data." />
 
-    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Privacy Policy | StudyMap - Flashcards by Momentum Apps" />
-    <meta property="og:description" content="Understand how StudyMap - Flashcards by Momentum Apps manages your data and privacy. Read our comprehensive privacy policy." />
+    <meta property="og:description" content="Understand how StudyMap - Flashcards manages your data, purchases, and privacy in compliance with global standards." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://momentum-apps.com/apps/studymap-flashcards/privacy-policy" />
+    <meta property="og:url" content="https://momentum-apps.com/apps/studymap-flashcards/privacy" />
 
-    <!-- Keywords -->
-    <meta name="keywords" content="Privacy Policy, StudyMap Privacy, Flashcards App Privacy, Momentum Apps Privacy Policy" />
+    <meta name="keywords" content="Privacy Policy, StudyMap Privacy, Flashcards App Privacy, Momentum Apps Privacy Policy, Firebase Analytics Privacy" />
 
     <link rel="stylesheet" href="assets/css/styles.css" />
     <style>
-        /* Additional styling for the Privacy Policy page */
         .privacy-policy {
           max-width: 800px;
           margin: 2rem auto;
-          padding: 0 1rem;
+          padding: 0 2rem;
           line-height: 1.8;
         }
         .privacy-policy h1,
@@ -56,15 +50,19 @@
         .privacy-policy a:hover {
           text-decoration: underline;
         }
+        .policy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007BFF;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
     </style>
 </head>
 <body>
 
-<!-- Navigation -->
 <header>
     <nav class="navbar">
-        <div class="logo">Momentum Apps</div>
-        <!-- Hamburger Icon -->
+        <div class="logo">StudyMap - Flashcards</div>
         <button class="hamburger" aria-label="Toggle navigation">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -74,52 +72,79 @@
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="help.html">Help & FAQ</a></li>
-            <li><a href="news.html">News</a></li>
             <li><a href="https://momentum-apps.com/contact">Contact</a></li>
             <li><a href="https://momentum-apps.com">More Apps</a></li>
         </ul>
     </nav>
 </header>
 
-<!-- Privacy Policy Content -->
 <main>
     <section class="privacy-policy">
         <h1>Privacy Policy</h1>
-        <p><em>Last updated: October 15, 2025</em></p>
+        <p><em>Last updated: April 19, 2026</em></p>
 
-        <h2>Introduction</h2>
-        <p>Momentum Apps Limited (“we,” “our,” or “us”) operates the <em>StudyMap - Flashcards</em> mobile application (the “App”). This Privacy Policy outlines our policies regarding the collection, use, and storage of data when you use our App. Our goal is to provide a transparent and secure experience for all users.</p>
+        <p>Momentum Apps Limited (“we,” “our,” or “us”), based in New Zealand, operates the <strong>StudyMap - Flashcards</strong> mobile application (the “App”). This policy explains how we handle your data as you use our study tools and purchase premium content.</p>
 
-        <h2>Information We Do Not Collect</h2>
-        <p>We do not collect, store, or process any personal or sensitive user data. All data entered into the App, such as flashcard decks, cards, and review settings, remains stored locally on your device.</p>
+        <div class="policy-box">
+            <strong>The Core Privacy Principle:</strong> Your flashcards belong to you. We do not host your personal decks on our servers, and we do not have an account system. Most of your data stays exactly where it belongs: on your device.
+        </div>
 
-        <h2>Data Storage</h2>
-        <p>Your flashcard data, including decks, cards, and review preferences, is stored exclusively on your device using a local database. This data is not uploaded to any server, cloud service, or external storage. We, as the developers, do not have access to your data.</p>
-        <p><strong>Deleting Your Data:</strong> You can delete all app data at any time by uninstalling the App from your device.</p>
+        <h2>1. Information We Collect</h2>
+        
+        <h3>1.1 Purchase Information</h3>
+        <p>When you make a one-time purchase in our Shop, the transaction is processed by the <strong>Google Play Store</strong>. While we do not store your credit card details, we collect technical identifiers to verify and provide your content:</p>
+        <ul>
+            <li>Purchase tokens and Order IDs.</li>
+            <li>Product IDs (e.g., "hsk_level_1_en").</li>
+            <li>Verification timestamps via <strong>Firebase Installation IDs</strong>.</li>
+        </ul>
 
-        <h2>Data Sharing</h2>
-        <p>We do not share your data with any third parties. The App does not use third-party tracking, analytics libraries (e.g., Google Analytics), or advertising services.</p>
+        <h3>1.2 Usage and Analytics Data</h3>
+        <p>We use <strong>Google Firebase Analytics</strong> to understand how the App is performing. This helps us identify which features are popular and where the App might be crashing. This data is aggregated and does not identify you personally. It includes:</p>
+        <ul>
+            <li>Device type and Operating System version.</li>
+            <li>General geographic location (Country/City level).</li>
+            <li>In-app events (e.g., "started_srs_session", "downloaded_deck").</li>
+        </ul>
 
-        <h2>Third-Party Services</h2>
-        <p>The App utilizes open-source libraries (e.g., for UI components, navigation, and file parsing for CSV/Excel imports). These libraries operate locally on your device and do not track, collect, or share your data externally.</p>
+        <h2>2. Information Stored Locally</h2>
+        <p>The following data is stored <strong>locally on your device</strong> and is never sent to Momentum Apps Limited or Firebase:</p>
+        <ul>
+            <li>Flashcard content you create or import (CSV/Excel/JSON).</li>
+            <li>Your specific study progress, SRS intervals, and difficulty ratings.</li>
+            <li>Your local deck organization and settings.</li>
+        </ul>
 
-        <h2>Permissions</h2>
-        <p>The App requires storage permissions to enable importing flashcard decks from CSV or Excel files stored on your device. These permissions are used solely to read and process user-selected files for deck creation. No data is accessed or modified without your explicit action (e.g., selecting a file to import).</p>
+        <h2>3. Third-Party Services</h2>
+        <p>To provide purchase verification and analytics, we use the following third-party services. We encourage you to review their privacy practices:</p>
+        <ul>
+            <li><strong>Google Play Services:</strong> Handles payments and app distribution. <br> <a href="https://policies.google.com/privacy" target="_blank">Google Privacy & Terms</a></li>
+            <li><strong>Firebase (Google):</strong> Used for purchase verification and crash reporting. <br> <a href="https://firebase.google.com/support/privacy" target="_blank">Privacy in Firebase</a></li>
+        </ul>
 
-        <h2>Changes to This Privacy Policy</h2>
-        <p>We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. The date of the last update will always be provided at the top of this document. We recommend checking this page periodically for updates.</p>
+        <h2>4. Data Retention and Deletion</h2>
+        <p>
+            Because we do not use an account system, we cannot "delete your account" upon request as no such account exists. 
+            <strong>To delete your local data:</strong> Simply uninstall the App or clear the App's storage in your device settings. 
+            Analytics data stored by Firebase is subject to Google’s standard retention policies (typically 14 months).
+        </p>
 
-        <h2>Contact Us</h2>
-        <p>If you have any questions about this Privacy Policy, please contact us:</p>
+        <h2>5. Children’s Privacy</h2>
+        <p>StudyMap is a general audience study tool. We do not knowingly collect personal information from children under the age of 13. If you are a parent and believe your child has provided us with information via a purchase or support email, please contact us.</p>
+
+        <h2>6. New Zealand Privacy Act & GDPR</h2>
+        <p>As a New Zealand-based company, we comply with the <strong>Privacy Act 2020</strong>. For users in the European Economic Area (EEA), we process your data based on your consent (for analytics) and the necessity of fulfilling a contract (for purchases).</p>
+
+        <h2>7. Contact Us</h2>
+        <p>If you have any questions about your privacy while using StudyMap, please reach out to us at:</p>
         <p>
             Email: <a href="mailto:support@momentum-apps.com">support@momentum-apps.com</a>
         </p>
     </section>
 </main>
 
-<!-- Footer -->
 <footer>
-    <p>&copy; 2025 Momentum Apps Limited. All rights reserved.</p>
+    <p>&copy; 2026 Momentum Apps Limited. All rights reserved.</p>
     <p>
         <a href="terms.html">Terms of Use</a> | <a href="privacy.html">Privacy Policy</a>
     </p>
