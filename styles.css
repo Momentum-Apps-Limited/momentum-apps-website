@@ -173,6 +173,37 @@ section.app-section h2 {
   transform: scale(1.05);
 }
 
+/* Web App Badge */
+.web-app-badge {
+  display: inline-block;
+  background-color: #2980b9;
+  color: #fff;
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+/* Web App Landscape Showcase */
+.web-showcase {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.web-showcase img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease;
+}
+.web-showcase img:hover {
+  transform: scale(1.02);
+}
+
 /* Contact Hero Section */
 .contact-hero {
   background: #fff;
