@@ -236,13 +236,18 @@ a:hover {
   padding: 72px 0;
 }
 
-.hero-grid,
-.feature-grid {
+.hero-grid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: 48px;
   align-items: center;
   min-width: 0;
+}
+
+#apps,
+#about,
+#storylingua {
+  scroll-margin-top: calc(var(--header) + 16px);
 }
 
 .kicker {
@@ -279,6 +284,7 @@ h1 em {
 .actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
   margin-top: 28px;
 }
@@ -370,13 +376,6 @@ h1 em {
   max-width: 40rem;
 }
 
-.feature {
-  background: white;
-  border-radius: 28px;
-  padding: clamp(24px, 4vw, 48px);
-  box-shadow: var(--shadow);
-}
-
 .feature-list {
   list-style: none;
   padding: 0;
@@ -399,14 +398,6 @@ h1 em {
   background: var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%230a6274' stroke-width='2' d='M3 8.2 6.2 11.5 13 4.5'/%3E%3C/svg%3E") center / 14px no-repeat;
 }
 
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 22px;
-}
-
-.chips span,
 .tag {
   display: inline-flex;
   align-items: center;
@@ -581,13 +572,30 @@ h1 em {
   flex: 1;
 }
 
-.card-link {
-  font-weight: 700;
-  text-decoration: none;
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
 }
 
-.card-link:hover {
-  text-decoration: underline;
+.play-badge {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.play-badge img {
+  /* The official asset includes transparent padding, so the image box is
+     taller than the badge artwork. These heights put the artwork at about
+     70px on pages and 48px on cards. */
+  height: 104px;
+  width: auto;
+  margin-block: -16px;
+}
+
+.play-badge-card img {
+  height: 72px;
+  margin-block: -11px;
 }
 
 .icon {
@@ -976,7 +984,6 @@ textarea:user-invalid,
 
 @media (max-width: 900px) {
   .hero-grid,
-  .feature-grid,
   .contact-card,
   .footer-grid {
     grid-template-columns: 1fr;

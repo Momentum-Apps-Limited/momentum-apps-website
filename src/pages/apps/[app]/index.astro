@@ -1,5 +1,6 @@
 ---
 import Base from "../../../layouts/Base.astro";
+import PlayBadge from "../../../components/PlayBadge.astro";
 import { apps, appDoc, type AppEntry } from "../../../data/apps";
 import { isCurrent } from "../../../lib/urls";
 
@@ -49,13 +50,7 @@ const path = Astro.url.pathname;
         )
       }
       <div class="actions">
-        {
-          app.status === "live" && (
-            <a class="btn btn-primary" href={app.href} target="_blank" rel="noopener noreferrer">
-              Get it on Google Play<span class="sr-only"> (opens in a new tab)</span>
-            </a>
-          )
-        }
+        {app.playUrl && <PlayBadge href={app.playUrl} />}
         <a class="btn btn-secondary" href="/#apps">All apps</a>
       </div>
       <nav class="doc-nav" aria-label={`${app.name} pages`}>

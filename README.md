@@ -69,7 +69,7 @@ These paths are unchanged so existing Play Store listings keep working. `npm run
 - `/apps/studymap/` plus `privacy.html`, `terms.html`, `help.html`
 - `/apps/studymap-flashcards/` plus `privacy.html`, `terms.html`, `help.html`
 
-StudyMap Study Planner is iOS and coming soon. It has no Google Play link. StoryLingua (story-lingua.com) is the featured app. VideoLingua and Momentum-Planner are not on this site.
+StudyMap Study Planner is iOS and coming soon. It has no Google Play badge. Habit Tracker and StudyMap Flashcards link to their pages on this site and to Google Play. StoryLingua links to story-lingua.com. VideoLingua and Momentum-Planner are not on this site.
 
 Facebook: https://www.facebook.com/profile.php?id=61573096473546  
 X: https://x.com/AppsMomentum

@@ -1,0 +1,18 @@
+---
+interface Props {
+  href: string;
+  size?: "page" | "card";
+}
+
+const { href, size = "page" } = Astro.props;
+---
+
+<a
+  class:list={["play-badge", size === "card" && "play-badge-card"]}
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img src="/images/google-play-badge.png" width="646" height="250" alt="Get it on Google Play" />
+  <span class="sr-only"> (opens in a new tab)</span>
+</a>

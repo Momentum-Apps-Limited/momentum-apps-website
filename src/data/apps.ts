@@ -30,7 +30,8 @@ export interface AppEntry {
   cta: string;
   href: string;
   external: boolean;
-  featured: boolean;
+  /** Google Play listing. Present only for apps that are on Play. */
+  playUrl?: string;
   features: string[];
   languages?: string[];
   screenshots: Screenshot[];
@@ -49,10 +50,9 @@ export const apps: AppEntry[] = [
       "Graded reading in Spanish, Japanese, Chinese, and Korean. Tap any word for a translation, then keep it with spaced-repetition flashcards.",
     platform: "Web",
     status: "live",
-    cta: "Visit site",
+    cta: "Try StoryLingua",
     href: company.storyLingua,
     external: true,
-    featured: true,
     features: [
       "Graded reading stories from beginner to advanced",
       "Tap any word for an instant translation",
@@ -77,10 +77,10 @@ export const apps: AppEntry[] = [
       "Habit Tracker - Plan, Succeed helps you stay with a habit using flexible schedules, streaks, reminders, and monthly reports.",
     platform: "Android",
     status: "live",
-    cta: "Google Play",
-    href: "https://play.google.com/store/apps/details?id=com.johnnycwatt.habittracker",
-    external: true,
-    featured: false,
+    cta: "Learn more",
+    href: "/apps/habittracker/",
+    external: false,
+    playUrl: "https://play.google.com/store/apps/details?id=com.johnnycwatt.habittracker",
     features: [
       "Set daily, weekly, monthly, or custom habits that fit your routine.",
       "Track streaks and see progress build on a completion calendar.",
@@ -114,10 +114,10 @@ export const apps: AppEntry[] = [
       "An offline-first flashcard app for vocabulary and study decks, with manual review, dictation, and spaced repetition.",
     platform: "Android",
     status: "live",
-    cta: "Google Play",
-    href: "https://play.google.com/store/apps/details?id=com.johnnycwatt.studymap",
-    external: true,
-    featured: false,
+    cta: "Learn more",
+    href: "/apps/studymap-flashcards/",
+    external: false,
+    playUrl: "https://play.google.com/store/apps/details?id=com.johnnycwatt.studymap",
     features: [
       "Your decks stay on your device. Study with or without a connection.",
       "Review manually, by dictation, or with spaced repetition.",
@@ -153,7 +153,6 @@ export const apps: AppEntry[] = [
     cta: "Learn more",
     href: "/apps/studymap/",
     external: false,
-    featured: false,
     features: [
       "Add as many tasks, subjects, and classes as your timetable needs.",
       "See today in a list, and the wider plan on a calendar.",
@@ -178,14 +177,6 @@ export const apps: AppEntry[] = [
     ],
   },
 ];
-
-const featured = apps.find((app) => app.featured);
-
-if (!featured) {
-  throw new Error("Expected a featured app in src/data/apps.ts");
-}
-
-export const featuredApp: AppEntry = featured;
 
 export function appHome(slug: string): string {
   return `/apps/${slug}/`;
