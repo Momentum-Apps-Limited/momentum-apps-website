@@ -429,20 +429,107 @@ h1 em {
   color: var(--teal-ink);
 }
 
-.showcase {
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--line);
+.gallery {
+  min-width: 0;
 }
 
-.showcase img {
+.gallery-browser {
+  background: #0b0d0e;
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 0 24px 50px rgba(8, 40, 48, 0.16);
+}
+
+.browser-chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 6px 10px;
+  color: #d7f4f8;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.browser-chrome i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  display: block;
+}
+
+.browser-chrome span {
+  margin-left: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gallery-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.browser-shot img {
   width: 100%;
   height: auto;
+  border-radius: 10px;
+  background: white;
+}
+
+.gallery-phone {
+  background: linear-gradient(180deg, #e4f6f9 0%, #f7fcfd 100%);
+  border-bottom: 1px solid var(--line);
+}
+
+.gallery-phone .gallery-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 18px;
+  padding: 16px 18px 14px;
+  scrollbar-width: thin;
+  scrollbar-color: #b7d0d6 transparent;
+}
+
+.gallery-phone .gallery-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.gallery-phone .gallery-track::-webkit-scrollbar-thumb {
+  background: #b7d0d6;
+  border-radius: 99px;
+}
+
+.gallery-phone .gallery-track:focus-visible {
+  outline-offset: -4px;
+}
+
+.gallery-phone .gallery-track li {
+  flex: 0 0 210px;
+  scroll-snap-align: start;
+}
+
+.phone-frame {
+  background: #111416;
+  border-radius: 26px;
+  padding: 7px;
+  box-shadow: 0 12px 28px rgba(8, 40, 48, 0.18);
+}
+
+.phone-frame img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  background: white;
 }
 
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -450,18 +537,46 @@ h1 em {
   background: white;
   border: 1px solid var(--line);
   border-radius: 20px;
-  padding: 24px;
   min-width: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.card .gallery-browser {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
+  padding: 16px 22px 22px;
+  flex: 1;
+}
+
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.card-head .icon {
+  width: 44px;
+  height: 44px;
+  flex: none;
 }
 
 .card h3 {
   font-size: 1.3rem;
 }
 
-.card p {
+.card .tags {
+  margin-top: 8px;
+}
+
+.card-body > p {
   color: var(--muted);
   flex: 1;
 }

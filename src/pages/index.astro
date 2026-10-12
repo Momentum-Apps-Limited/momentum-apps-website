@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import ContactForm from "../components/ContactForm.astro";
 import Icon from "../components/Icon.astro";
+import ScreenshotGallery from "../components/ScreenshotGallery.astro";
 import { apps, company, featuredApp } from "../data/apps";
 
 const icons: Record<string, "book" | "check" | "cards" | "calendar"> = {
@@ -30,7 +31,6 @@ const software = JSON.stringify({
   })),
 }).replace(/</g, "\\u003c");
 
-const showcase = featuredApp.screenshots[0];
 ---
 
 <Base
@@ -41,7 +41,6 @@ const showcase = featuredApp.screenshots[0];
   <section class="hero">
     <div class="container hero-grid">
       <div class="reveal">
-        <p class="kicker">Independent app studio</p>
         <h1>Apps that help you build <em>momentum</em>.</h1>
         <p class="lead">
           Learn a language through stories, keep a habit, or plan your study. We make simple tools that help you start and keep going.
@@ -88,9 +87,7 @@ const showcase = featuredApp.screenshots[0];
             Start reading free<span class="sr-only"> (opens in a new tab)</span>
           </a>
         </div>
-        <div class="showcase">
-          <img src={showcase.src} width={showcase.width} height={showcase.height} alt={showcase.alt} />
-        </div>
+        <ScreenshotGallery screenshots={featuredApp.screenshots} name={featuredApp.name} variant="browser" />
       </div>
     </div>
   </section>
@@ -98,26 +95,37 @@ const showcase = featuredApp.screenshots[0];
   <section class="section" id="apps">
     <div class="container">
       <h2>Our apps</h2>
-      <p class="sub">A small set of learning and study tools. Each one has a clear job.</p>
+      <p class="sub">StoryLingua, Habit Tracker, and StudyMap. Each one has a clear job.</p>
       <div class="app-grid">
         {
           apps.map((app) => (
             <article class="card reveal">
-              <div class={`icon ${iconClass[app.id] ?? ""}`}>
-                <Icon name={icons[app.id] ?? "book"} />
+              <ScreenshotGallery
+                screenshots={app.screenshots}
+                name={app.name}
+                variant={app.platform === "Web" ? "browser" : "phone"}
+              />
+              <div class="card-body">
+                <div class="card-head">
+                  <div class={`icon ${iconClass[app.id] ?? ""}`}>
+                    <Icon name={icons[app.id] ?? "book"} />
+                  </div>
+                  <div>
+                    <h3>{app.name}</h3>
+                    <p class="tags">
+                      <span class="tag">{app.platform}</span>
+                      <span class={app.status === "live" ? "tag tag-live" : "tag tag-soon"}>
+                        {app.status === "live" ? "Live" : "Coming soon"}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+                <p>{app.pitch}</p>
+                <a class="card-link" href={app.href} target={app.external ? "_blank" : undefined} rel={app.external ? "noopener noreferrer" : undefined}>
+                  {app.cta}
+                  {app.external && <span class="sr-only"> (opens in a new tab)</span>}
+                </a>
               </div>
-              <h3>{app.name}</h3>
-              <p class="tags">
-                <span class="tag">{app.platform}</span>
-                <span class={app.status === "live" ? "tag tag-live" : "tag tag-soon"}>
-                  {app.status === "live" ? "Live" : "Coming soon"}
-                </span>
-              </p>
-              <p>{app.pitch}</p>
-              <a class="card-link" href={app.href} target={app.external ? "_blank" : undefined} rel={app.external ? "noopener noreferrer" : undefined}>
-                {app.cta}
-                {app.external && <span class="sr-only"> (opens in a new tab)</span>}
-              </a>
             </article>
           ))
         }
@@ -127,12 +135,12 @@ const showcase = featuredApp.screenshots[0];
 
   <section class="section" id="about">
     <div class="container">
-      <h2>Built to keep you going</h2>
-      <p class="sub">Momentum Apps Limited is an independent studio. We design, ship, and support our own apps.</p>
+      <h2>Apps that help you build momentum</h2>
+      <p class="sub">Learn a language through stories, keep a habit, or plan your study. Come back tomorrow and pick up where you left off.</p>
       <div class="values">
         <article class="value reveal">
-          <h3>Small on purpose</h3>
-          <p>A handful of apps, each looked after by the people who made it. Support goes to a real inbox.</p>
+          <h3>Stories, habits, and plans</h3>
+          <p>StoryLingua for reading, Habit Tracker for streaks, and StudyMap for flashcards and a study plan.</p>
         </article>
         <article class="value reveal">
           <h3>Plain about privacy</h3>
