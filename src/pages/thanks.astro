@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+import { company } from "../data/apps";
+---
+
+<Base
+  title="Message sent | Momentum Apps"
+  description="Your message to Momentum Apps Limited has been sent."
+  noindex={true}
+>
+  <section class="page-intro">
+    <div class="container narrow">
+      <h1>Thanks, we'll reply within 2 business days.</h1>
+      <p class="lead">Your message is on its way to {company.email}.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/">Back to the home page</a>
+        <a class="btn btn-secondary" href="/#apps">See our apps</a>
+      </div>
+    </div>
+  </section>
+</Base>

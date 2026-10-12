@@ -1,0 +1,26 @@
+{
+  "name": "momentum-apps-website",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host",
+    "build": "astro build",
+    "preview": "astro preview --host",
+    "brand": "node scripts/generate-brand-assets.mjs",
+    "test": "node --experimental-strip-types --test functions/api/contact.test.ts",
+    "check:urls": "node scripts/check-legacy-urls.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/plus-jakarta-sans": "^5.2.8",
+    "astro": "^7.3.8"
+  },
+  "devDependencies": {
+    "png-to-ico": "^3.0.2",
+    "sharp": "^0.35.5"
+  }
+}

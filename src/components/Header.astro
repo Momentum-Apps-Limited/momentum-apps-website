@@ -1,0 +1,58 @@
+---
+import { company } from "../data/apps";
+import { canonicalPath } from "../lib/urls";
+
+const path = canonicalPath(Astro.url.pathname);
+const onContact = path === "/contact";
+---
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="/">
+      <img src="/logo.png" width="44" height="44" alt="" />
+      <span>Momentum Apps</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Open menu</span>
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <a href="/#apps">Apps</a>
+      <a href="/#storylingua">StoryLingua</a>
+      <a href="/#about">About</a>
+      <a href="/contact.html" aria-current={onContact ? "page" : undefined}>Contact</a>
+      <a class="btn btn-primary" href={company.storyLingua} target="_blank" rel="noopener noreferrer">
+        Try StoryLingua<span class="sr-only"> (opens in a new tab)</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>(".nav-toggle");
+  const nav = document.querySelector<HTMLElement>("#site-nav");
+  const label = button?.querySelector(".sr-only");
+
+  function setOpen(open: boolean) {
+    if (!button || !nav || !label) return;
+    button.setAttribute("aria-expanded", String(open));
+    nav.classList.toggle("is-open", open);
+    label.textContent = open ? "Close menu" : "Open menu";
+  }
+
+  button?.addEventListener("click", () => {
+    setOpen(button.getAttribute("aria-expanded") !== "true");
+  });
+
+  nav?.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target instanceof HTMLAnchorElement) setOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+</script>

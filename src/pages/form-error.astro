@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+import { company } from "../data/apps";
+
+const mailto = `mailto:${company.email}?subject=${encodeURIComponent("Website message")}`;
+---
+
+<Base
+  title="Message not sent | Momentum Apps"
+  description="The contact form could not send your message. Email Momentum Apps Limited instead."
+  noindex={true}
+>
+  <section class="page-intro">
+    <div class="container narrow">
+      <h1>We couldn't send your message.</h1>
+      <p class="lead">
+        The form did not go through. Email us and we will take it from there.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href={mailto}>Email {company.email}</a>
+        <a class="btn btn-secondary" href="/contact.html">Try the form again</a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,44 @@
+---
+import { apps, company, policyLinks } from "../data/apps";
+
+const year = new Date().getFullYear();
+const withPolicies = apps.filter((app) => app.slug);
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">Momentum Apps</p>
+      <p>&copy; <span id="copyright-year">{year}</span> {company.name}</p>
+    </div>
+    <nav class="policy-groups" aria-label="App policies">
+      {
+        withPolicies.map((app) => (
+          <p>
+            <span>{app.name}: </span>
+            {policyLinks(app).map((link, index) => (
+              <>
+                {index > 0 && " · "}
+                <a href={link.href}>{link.label}</a>
+              </>
+            ))}
+          </p>
+        ))
+      }
+    </nav>
+    <div class="footer-contact">
+      <a href={`mailto:${company.email}`}>{company.email}</a>
+      <a href={company.facebook} target="_blank" rel="noopener noreferrer">
+        Facebook<span class="sr-only"> (opens in a new tab)</span>
+      </a>
+      <a href={company.x} target="_blank" rel="noopener noreferrer">
+        X<span class="sr-only"> (opens in a new tab)</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const year = document.querySelector("#copyright-year");
+  if (year) year.textContent = String(new Date().getFullYear());
+</script>

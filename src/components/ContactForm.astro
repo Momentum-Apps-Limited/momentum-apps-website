@@ -1,0 +1,221 @@
+---
+import { company } from "../data/apps";
+
+const siteKey = process.env.TURNSTILE_SITE_KEY ?? "";
+const mailto = `mailto:${company.email}`;
+---
+
+<div class="contact-card" id="contact">
+  <div class="contact-info">
+    <h2>Get in touch</h2>
+    <p>
+      Questions, feedback, support, or partnerships. We usually reply within 2 business days.
+    </p>
+    <div class="contact-links">
+      <a href={mailto}>{company.email}</a>
+      <a href={company.facebook} target="_blank" rel="noopener noreferrer">
+        Facebook<span class="sr-only"> (opens in a new tab)</span>
+      </a>
+      <a href={company.x} target="_blank" rel="noopener noreferrer">
+        X<span class="sr-only"> (opens in a new tab)</span>
+      </a>
+    </div>
+  </div>
+
+  <div>
+    <div class="form-banner form-success full" id="contact-success" role="status" tabindex="-1" hidden>
+      <h3>Thanks, we'll reply within 2 business days.</h3>
+      <p>Your message is on its way to {company.email}.</p>
+    </div>
+
+    <form class="contact-form" id="contact-form" action="/api/contact" method="post" novalidate>
+      <div class="hp" aria-hidden="true">
+        <label for="hp_field">Company</label>
+        <input id="hp_field" name="hp_field" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" maxlength="100" required placeholder="Your name" />
+        <p class="field-error" id="name-error" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com" />
+        <p class="field-error" id="email-error" hidden></p>
+      </div>
+
+      <div class="field full">
+        <label for="subject">Topic</label>
+        <select id="subject" name="subject" required>
+          <option value="">Select a topic</option>
+          <option value="general">General inquiry</option>
+          <option value="support">Support</option>
+          <option value="feedback">Feedback</option>
+          <option value="partnership">Partnership</option>
+        </select>
+        <p class="field-error" id="subject-error" hidden></p>
+      </div>
+
+      <div class="field full">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" minlength="10" maxlength="5000" required placeholder="How can we help?"></textarea>
+        <p class="field-error" id="message-error" hidden></p>
+      </div>
+
+      <div class="field full">
+        {
+          siteKey ? (
+            <div class="cf-turnstile turnstile-slot" data-sitekey={siteKey} data-theme="light" />
+          ) : (
+            <p class="turnstile-pending">
+              Cloudflare Turnstile will appear here after TURNSTILE_SITE_KEY is set and the site is rebuilt.
+            </p>
+          )
+        }
+        <p class="field-error" id="turnstile-error" hidden></p>
+      </div>
+
+      <div class="form-banner form-error full" id="contact-error" role="alert" tabindex="-1" hidden>
+        <h3>We couldn't send your message.</h3>
+        <p id="contact-error-text">Please try again, or email us directly.</p>
+        <p><a id="contact-mailto" href={mailto}>Email {company.email}</a></p>
+      </div>
+
+      <div class="full">
+        <button class="btn btn-primary" id="contact-submit" type="submit">Send message</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{
+  siteKey && (
+    <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer />
+  )
+}
+
+<script define:vars={{ supportEmail: company.email }}>
+  const form = document.querySelector("#contact-form");
+  const success = document.querySelector("#contact-success");
+  const errorBox = document.querySelector("#contact-error");
+  const errorText = document.querySelector("#contact-error-text");
+  const mailto = document.querySelector("#contact-mailto");
+  const submit = document.querySelector("#contact-submit");
+
+  const fields = ["name", "email", "subject", "message", "turnstile"];
+  const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+  function field(name) {
+    return form?.querySelector(`[name="${name}"]`);
+  }
+
+  function showFieldError(name, message) {
+    const input = name === "turnstile" ? null : field(name);
+    const slot = document.querySelector(`#${name}-error`);
+    if (slot) {
+      slot.hidden = !message;
+      slot.textContent = message || "";
+    }
+    if (input instanceof HTMLElement) {
+      if (message) {
+        input.setAttribute("aria-invalid", "true");
+        input.setAttribute("aria-describedby", `${name}-error`);
+      } else {
+        input.removeAttribute("aria-invalid");
+        input.removeAttribute("aria-describedby");
+      }
+    }
+  }
+
+  function clearErrors() {
+    for (const name of fields) showFieldError(name, "");
+    if (errorBox) errorBox.hidden = true;
+  }
+
+  function mailtoHref() {
+    const name = field("name")?.value || "";
+    const topic = field("subject")?.value || "general";
+    const message = field("message")?.value || "";
+    const params = new URLSearchParams({
+      subject: `Website message (${topic}) from ${name}`.slice(0, 120),
+      body: message,
+    });
+    return `mailto:${supportEmail}?${params.toString()}`;
+  }
+
+  function showFailure(message) {
+    if (!errorBox || !errorText || !mailto) return;
+    errorText.textContent = message;
+    mailto.href = mailtoHref();
+    errorBox.hidden = false;
+    errorBox.focus();
+  }
+
+  function clientErrors() {
+    const errors = {};
+    const name = (field("name")?.value || "").trim();
+    const email = (field("email")?.value || "").trim();
+    const subject = field("subject")?.value || "";
+    const message = (field("message")?.value || "").trim();
+    if (name.length < 1 || name.length > 100) errors.name = "Enter your name (1 to 100 characters).";
+    if (!emailPattern.test(email) || email.length > 254) errors.email = "Enter a valid email address.";
+    if (!["general", "support", "feedback", "partnership"].includes(subject)) errors.subject = "Choose a topic.";
+    if (message.length < 10 || message.length > 5000) {
+      errors.message = "Enter a message between 10 and 5,000 characters.";
+    }
+    const turnstile = form?.querySelector('[name="cf-turnstile-response"]');
+    const widget = form?.querySelector(".cf-turnstile");
+    if (widget && turnstile instanceof HTMLInputElement && !turnstile.value) {
+      errors.turnstile = "Complete the verification check.";
+    }
+    return errors;
+  }
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!(form instanceof HTMLFormElement) || !(submit instanceof HTMLButtonElement)) return;
+    clearErrors();
+    const errors = clientErrors();
+    const names = Object.keys(errors);
+    if (names.length) {
+      for (const name of names) showFieldError(name, errors[name]);
+      field(names[0])?.focus();
+      return;
+    }
+
+    submit.disabled = true;
+    submit.setAttribute("aria-busy", "true");
+    submit.textContent = "Sending…";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: { accept: "application/json" },
+        body: new FormData(form),
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || !payload.ok) {
+        const serverErrors = payload.errors || {};
+        const keys = Object.keys(serverErrors);
+        for (const name of keys) showFieldError(name, serverErrors[name]);
+        if (!keys.length) showFailure(payload.error || "We could not send your message just now.");
+        else if (payload.error) showFailure(payload.error);
+        window.turnstile?.reset();
+        return;
+      }
+      form.hidden = true;
+      if (success) {
+        success.hidden = false;
+        success.focus();
+      }
+    } catch {
+      showFailure("We could not reach the server. Email us and we will take it from there.");
+    } finally {
+      submit.disabled = false;
+      submit.removeAttribute("aria-busy");
+      submit.textContent = "Send message";
+    }
+  });
+</script>
