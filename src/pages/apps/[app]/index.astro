@@ -1,6 +1,7 @@
 ---
 import Base from "../../../layouts/Base.astro";
 import PlayBadge from "../../../components/PlayBadge.astro";
+import PromoSection from "../../../components/PromoSection.astro";
 import { apps, appDoc, type AppEntry } from "../../../data/apps";
 import { isCurrent } from "../../../lib/urls";
 
@@ -65,20 +66,13 @@ const path = Astro.url.pathname;
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <ul class="shots">
-        {
-          app.screenshots.map((shot) => (
-            <li>
-              <img src={shot.src} width={shot.width} height={shot.height} alt={shot.alt} />
-            </li>
-          ))
-        }
-      </ul>
-      <ul class="feature-list">
-        {app.features.map((feature) => <li>{feature}</li>)}
-      </ul>
-    </div>
-  </section>
+  {
+    app.promo?.map((block, index) => (
+      <div class="section">
+        <div class="container">
+          <PromoSection block={block} flip={index % 2 === 1} />
+        </div>
+      </div>
+    ))
+  }
 </Base>
