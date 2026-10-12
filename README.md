@@ -32,16 +32,13 @@ Do this in the Cloudflare Pages project **before** the form can send mail. Nothi
 
 1. **Turnstile.** In the Cloudflare dashboard, open Turnstile and create a widget for `momentum-apps.com`. Add the preview host (`*.pages.dev`) as well if you want the form to work on preview deployments. Copy the site key and the secret key.
 
-2. **Pages environment variables.** In the Pages project, set these for Production and Preview:
+2. **Pages secrets.** Because this repo has a `wrangler.toml`, Pages does not apply dashboard plain-text variables at build time. The public Turnstile site key is in `wrangler.toml` under `[vars]`, and the Astro build writes it into the HTML from that file (or from `TURNSTILE_SITE_KEY` if you set it in the shell). Keep these as encrypted dashboard secrets for Production and Preview. Do not copy them into `[vars]`; a same-named entry would shadow the secret:
 
    | Name | Where it is used |
    | --- | --- |
-   | `TURNSTILE_SITE_KEY` | **Build.** It is written into the static HTML. Changing it requires a new build. |
    | `TURNSTILE_SECRET_KEY` | **Runtime.** The function uses it to verify tokens. |
    | `RESEND_API_KEY` | **Runtime.** The function uses it to send mail. |
    | `RESEND_FROM` | Optional runtime override. Default is `Momentum Apps <website@momentum-apps.com>`. |
-
-   Mark the two secrets as encrypted. `TURNSTILE_SITE_KEY` is public, but it still has to be present when the site builds.
 
 3. **Resend domain.** Add `momentum-apps.com` in Resend and publish the DNS records it gives you (SPF and DKIM) on the Cloudflare zone for that domain. Wait until Resend shows the domain as verified. The `from` address must be on that domain. Mail is delivered to `support@momentum-apps.com`.
 
@@ -56,7 +53,7 @@ Do this in the Cloudflare Pages project **before** the form can send mail. Nothi
 
 5. **Deploy a preview first.** Submit the form on the preview URL. You should get the message at support@momentum-apps.com, and reply should go to the address you typed.
 
-For a local build of the widget, copy [`.env.example`](.env.example) to `.env` and set `TURNSTILE_SITE_KEY`. The secret and the Resend key are only read by the function at request time (`npx wrangler pages dev dist` if you want to exercise it locally).
+A local `npm run build` picks up the site key from `wrangler.toml`. Set `TURNSTILE_SITE_KEY` in the environment only if you need to override it. The secret and the Resend key are only read by the function at request time (`npx wrangler pages dev dist` if you want to exercise it locally).
 
 ## Logo
 
