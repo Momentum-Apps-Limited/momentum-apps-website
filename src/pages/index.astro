@@ -2,8 +2,9 @@
 import Base from "../layouts/Base.astro";
 import ContactForm from "../components/ContactForm.astro";
 import Icon from "../components/Icon.astro";
+import PlayBadge from "../components/PlayBadge.astro";
 import ScreenshotGallery from "../components/ScreenshotGallery.astro";
-import { apps, company, featuredApp } from "../data/apps";
+import { apps, company } from "../data/apps";
 
 const icons: Record<string, "book" | "check" | "cards" | "calendar"> = {
   storylingua: "book",
@@ -26,7 +27,7 @@ const software = JSON.stringify({
     name: app.name,
     applicationCategory: app.id === "habit-tracker" ? "LifestyleApplication" : "EducationalApplication",
     operatingSystem: app.platform,
-    url: app.external ? app.href : new URL(app.href, company.url).href,
+    url: app.playUrl ?? (app.external ? app.href : new URL(app.href, company.url).href),
     description: app.pitch,
   })),
 }).replace(/</g, "\\u003c");
@@ -70,28 +71,6 @@ const software = JSON.stringify({
     </div>
   </section>
 
-  <section class="section" id="storylingua">
-    <div class="container">
-      <div class="feature feature-grid reveal">
-        <div>
-          <p class="kicker">Featured app</p>
-          <h2>StoryLingua</h2>
-          <p class="sub">{featuredApp.summary}</p>
-          <ul class="feature-list">
-            {featuredApp.features.map((feature) => <li>{feature}</li>)}
-          </ul>
-          <div class="chips">
-            {featuredApp.languages?.map((language) => <span>{language}</span>)}
-          </div>
-          <a class="btn btn-primary" href={featuredApp.href} target="_blank" rel="noopener noreferrer">
-            Start reading free<span class="sr-only"> (opens in a new tab)</span>
-          </a>
-        </div>
-        <ScreenshotGallery screenshots={featuredApp.screenshots} name={featuredApp.name} variant="browser" />
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="apps">
     <div class="container">
       <h2>Our apps</h2>
@@ -99,7 +78,7 @@ const software = JSON.stringify({
       <div class="app-grid">
         {
           apps.map((app) => (
-            <article class="card reveal">
+            <article class="card reveal" id={app.id === "storylingua" ? "storylingua" : undefined}>
               <ScreenshotGallery
                 screenshots={app.screenshots}
                 name={app.name}
@@ -121,10 +100,13 @@ const software = JSON.stringify({
                   </div>
                 </div>
                 <p>{app.pitch}</p>
-                <a class="card-link" href={app.href} target={app.external ? "_blank" : undefined} rel={app.external ? "noopener noreferrer" : undefined}>
-                  {app.cta}
-                  {app.external && <span class="sr-only"> (opens in a new tab)</span>}
-                </a>
+                <div class="card-actions">
+                  <a class="btn btn-secondary" href={app.href} target={app.external ? "_blank" : undefined} rel={app.external ? "noopener noreferrer" : undefined}>
+                    {app.cta}
+                    {app.external && <span class="sr-only"> (opens in a new tab)</span>}
+                  </a>
+                  {app.playUrl && <PlayBadge href={app.playUrl} size="card" />}
+                </div>
               </div>
             </article>
           ))

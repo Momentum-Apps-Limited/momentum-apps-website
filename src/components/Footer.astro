@@ -1,40 +1,39 @@
 ---
-import { apps, company, policyLinks } from "../data/apps";
+import { company } from "../data/apps";
 
 const year = new Date().getFullYear();
-const withPolicies = apps.filter((app) => app.slug);
 ---
 
 <footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <p class="footer-brand">Momentum Apps</p>
-      <p>&copy; <span id="copyright-year">{year}</span> {company.name}</p>
-    </div>
-    <nav class="policy-groups" aria-label="App policies">
-      {
-        withPolicies.map((app) => (
-          <p>
-            <span>{app.name}: </span>
-            {policyLinks(app).map((link, index) => (
-              <>
-                {index > 0 && " · "}
-                <a href={link.href}>{link.label}</a>
-              </>
-            ))}
-          </p>
-        ))
-      }
+  <div class="container footer-bar">
+    <a class="footer-brand" href="/">
+      <img src="/logo.png" width="40" height="40" alt="" />
+      <span>Momentum Apps</span>
+    </a>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/#apps">Apps</a>
+      <a href="/contact.html">Contact</a>
     </nav>
-    <div class="footer-contact">
-      <a href={`mailto:${company.email}`}>{company.email}</a>
-      <a href={company.facebook} target="_blank" rel="noopener noreferrer">
-        Facebook<span class="sr-only"> (opens in a new tab)</span>
+    <div class="footer-social">
+      <a href={company.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook (opens in a new tab)">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M14.5 8.5V6.8c0-.7.5-1.1 1.2-1.1H17V3h-2.1C12.4 3 11 4.4 11 6.6v1.9H9v2.7h2V21h3v-9.8h2.3l.4-2.7h-2.7z"
+          ></path>
+        </svg>
       </a>
-      <a href={company.x} target="_blank" rel="noopener noreferrer">
-        X<span class="sr-only"> (opens in a new tab)</span>
+      <a href={company.x} target="_blank" rel="noopener noreferrer" aria-label="X (opens in a new tab)">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M14.7 10.4 21.8 2h-2.1l-5.5 6.4L9.4 2H3.1l7.4 10.8L3.3 22h2.1l6-7 4.8 7h6.3l-7.8-11.6Zm-2.1 2.5-.7-1L5.9 3.5h2.4l4.5 6.4.7 1 5.8 8.3h-2.4l-4.3-6.3Z"
+          ></path>
+        </svg>
       </a>
     </div>
+    <a class="footer-email" href={`mailto:${company.email}`}>{company.email}</a>
+    <p class="footer-copy">&copy; <span id="copyright-year">{year}</span> {company.name}</p>
   </div>
 </footer>
 

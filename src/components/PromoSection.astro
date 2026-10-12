@@ -1,0 +1,54 @@
+---
+import type { PromoBlock } from "../data/apps";
+
+interface Props {
+  block: PromoBlock;
+  flip?: boolean;
+}
+
+const { block, flip = false } = Astro.props;
+---
+
+<section class:list={["promo", flip && "is-flip"]}>
+  <div class="promo-phones">
+    {
+      block.features.map((feature) => (
+        <img
+          src={feature.screenshot.src}
+          width={feature.screenshot.width}
+          height={feature.screenshot.height}
+          alt={feature.screenshot.alt}
+          loading="lazy"
+          decoding="async"
+        />
+      ))
+    }
+  </div>
+  <div class="promo-panel">
+    <h2 class="promo-heading">{block.heading}</h2>
+    <ol class="promo-list">
+      {
+        block.features.map((feature, index) => (
+          <li class="promo-item">
+            <img
+              class="promo-shot"
+              src={feature.screenshot.src}
+              width={feature.screenshot.width}
+              height={feature.screenshot.height}
+              alt={feature.screenshot.alt}
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="promo-copy">
+              <h3>
+                <span class="promo-num">{String(index + 1).padStart(2, "0")}</span>
+                {feature.title}
+              </h3>
+              <p>{feature.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
