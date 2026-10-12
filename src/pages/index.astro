@@ -1,0 +1,162 @@
+---
+import Base from "../layouts/Base.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Icon from "../components/Icon.astro";
+import ScreenshotGallery from "../components/ScreenshotGallery.astro";
+import { apps, company, featuredApp } from "../data/apps";
+
+const icons: Record<string, "book" | "check" | "cards" | "calendar"> = {
+  storylingua: "book",
+  "habit-tracker": "check",
+  "studymap-flashcards": "cards",
+  "studymap-planner": "calendar",
+};
+
+const iconClass: Record<string, string> = {
+  storylingua: "",
+  "habit-tracker": "icon-ink",
+  "studymap-flashcards": "icon-aqua",
+  "studymap-planner": "",
+};
+
+const software = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": apps.map((app) => ({
+    "@type": "SoftwareApplication",
+    name: app.name,
+    applicationCategory: app.id === "habit-tracker" ? "LifestyleApplication" : "EducationalApplication",
+    operatingSystem: app.platform,
+    url: app.external ? app.href : new URL(app.href, company.url).href,
+    description: app.pitch,
+  })),
+}).replace(/</g, "\\u003c");
+
+---
+
+<Base
+  title="Momentum Apps | Apps that help you build momentum"
+  description="Momentum Apps Limited builds StoryLingua, Habit Tracker, and StudyMap. Simple apps that help you learn, focus, and build momentum."
+  jsonLd={software}
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <h1>Apps that help you build <em>momentum</em>.</h1>
+        <p class="lead">
+          Learn a language through stories, keep a habit, or plan your study. We make simple tools that help you start and keep going.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href={company.storyLingua} target="_blank" rel="noopener noreferrer">
+            Try StoryLingua<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+          <a class="btn btn-secondary" href="#apps">See our apps</a>
+        </div>
+      </div>
+      <div class="reader reveal" aria-hidden="true">
+        <div class="reader-chrome">
+          <i></i><i></i><i></i>
+          <span>StoryLingua</span>
+        </div>
+        <div class="reader-body">
+          <p class="reader-meta">Spanish · A1</p>
+          <p class="reader-title">El gato curioso</p>
+          <p>Había una vez un <mark>gato</mark> muy curioso que vivía en una pequeña casa…</p>
+          <div class="gloss">
+            <p><strong>gato</strong> <span>cat</span></p>
+            <p class="gloss-action">+ Add to flashcards</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="storylingua">
+    <div class="container">
+      <div class="feature feature-grid reveal">
+        <div>
+          <p class="kicker">Featured app</p>
+          <h2>StoryLingua</h2>
+          <p class="sub">{featuredApp.summary}</p>
+          <ul class="feature-list">
+            {featuredApp.features.map((feature) => <li>{feature}</li>)}
+          </ul>
+          <div class="chips">
+            {featuredApp.languages?.map((language) => <span>{language}</span>)}
+          </div>
+          <a class="btn btn-primary" href={featuredApp.href} target="_blank" rel="noopener noreferrer">
+            Start reading free<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        </div>
+        <ScreenshotGallery screenshots={featuredApp.screenshots} name={featuredApp.name} variant="browser" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apps">
+    <div class="container">
+      <h2>Our apps</h2>
+      <p class="sub">StoryLingua, Habit Tracker, and StudyMap. Each one has a clear job.</p>
+      <div class="app-grid">
+        {
+          apps.map((app) => (
+            <article class="card reveal">
+              <ScreenshotGallery
+                screenshots={app.screenshots}
+                name={app.name}
+                variant={app.platform === "Web" ? "browser" : "phone"}
+              />
+              <div class="card-body">
+                <div class="card-head">
+                  <div class={`icon ${iconClass[app.id] ?? ""}`}>
+                    <Icon name={icons[app.id] ?? "book"} />
+                  </div>
+                  <div>
+                    <h3>{app.name}</h3>
+                    <p class="tags">
+                      <span class="tag">{app.platform}</span>
+                      <span class={app.status === "live" ? "tag tag-live" : "tag tag-soon"}>
+                        {app.status === "live" ? "Live" : "Coming soon"}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+                <p>{app.pitch}</p>
+                <a class="card-link" href={app.href} target={app.external ? "_blank" : undefined} rel={app.external ? "noopener noreferrer" : undefined}>
+                  {app.cta}
+                  {app.external && <span class="sr-only"> (opens in a new tab)</span>}
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <h2>Apps that help you build momentum</h2>
+      <p class="sub">Learn a language through stories, keep a habit, or plan your study. Come back tomorrow and pick up where you left off.</p>
+      <div class="values">
+        <article class="value reveal">
+          <h3>Stories, habits, and plans</h3>
+          <p>StoryLingua for reading, Habit Tracker for streaks, and StudyMap for flashcards and a study plan.</p>
+        </article>
+        <article class="value reveal">
+          <h3>Plain about privacy</h3>
+          <p>Every app has its own privacy policy and terms, written for that app. We only collect what it needs to work.</p>
+        </article>
+        <article class="value reveal">
+          <h3>One job each</h3>
+          <p>Stories, flashcards, habits, and study plans. Simple tools you can come back to tomorrow.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Contact">
+    <div class="container reveal">
+      <ContactForm />
+    </div>
+  </section>
+</Base>

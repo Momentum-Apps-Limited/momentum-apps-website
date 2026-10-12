@@ -1,0 +1,58 @@
+---
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import Base from "../../../layouts/Base.astro";
+import { apps, appDoc, appHome } from "../../../data/apps";
+import { legacyDocs } from "../../../data/legacy";
+import { isCurrent } from "../../../lib/urls";
+
+export function getStaticPaths() {
+  return legacyDocs.map((doc) => ({
+    params: { app: doc.app, page: doc.page },
+    props: { doc },
+  }));
+}
+
+interface Props {
+  doc: (typeof legacyDocs)[number];
+}
+
+const { doc } = Astro.props;
+const app = apps.find((entry) => entry.slug === doc.app);
+const html = readFileSync(path.join(process.cwd(), "src/content/legacy", doc.file), "utf8");
+const pages = [
+  { href: appHome(doc.app), label: "Overview" },
+  { href: appDoc(doc.app, "help"), label: "Help" },
+  { href: appDoc(doc.app, "privacy"), label: "Privacy" },
+  { href: appDoc(doc.app, "terms"), label: "Terms" },
+  ...(app?.extraPages ?? []).map((page) => ({
+    href: appDoc(doc.app, page.page),
+    label: page.label,
+  })),
+];
+const pathname = Astro.url.pathname;
+---
+
+<Base title={doc.title} description={doc.description}>
+  <section class="page-intro">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href={appHome(doc.app)}>{app?.name ?? "App"}</a>
+        <span aria-hidden="true">/</span>
+        <span>{doc.page[0].toUpperCase() + doc.page.slice(1)}</span>
+      </nav>
+      <nav class="doc-nav" aria-label="Pages for this app">
+        {
+          pages.map((page) => (
+            <a href={page.href} aria-current={isCurrent(pathname, page.href) ? "page" : undefined}>
+              {page.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+  <article class="container prose" set:html={html} />
+</Base>

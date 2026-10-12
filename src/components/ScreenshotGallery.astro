@@ -1,0 +1,47 @@
+---
+import type { Screenshot } from "../data/apps";
+
+interface Props {
+  screenshots: Screenshot[];
+  name: string;
+  variant: "phone" | "browser";
+}
+
+const { screenshots, name, variant } = Astro.props;
+const scrollable = variant === "phone" && screenshots.length > 1;
+---
+
+<div class:list={["gallery", variant === "phone" ? "gallery-phone" : "gallery-browser"]}>
+  {
+    variant === "browser" && (
+      <div class="browser-chrome" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+        <span>{name}</span>
+      </div>
+    )
+  }
+  <ul
+    class="gallery-track"
+    tabindex={scrollable ? 0 : undefined}
+    aria-label={scrollable ? `${name} screenshots` : undefined}
+  >
+    {
+      screenshots.map((shot) => (
+        <li>
+          <div class={variant === "phone" ? "phone-frame" : "browser-shot"}>
+            <img
+              src={shot.src}
+              width={shot.width}
+              height={shot.height}
+              alt={shot.alt}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>

@@ -1,0 +1,11 @@
+name = "momentum-apps"
+compatibility_date = "2026-10-12"
+pages_build_output_dir = "dist"
+
+# Public values only. Pages ignores dashboard plain-text variables at build
+# time when this file is present, so the Turnstile site key lives here.
+# Do not add RESEND_API_KEY or TURNSTILE_SECRET_KEY: a [vars] entry would
+# shadow the encrypted dashboard secret at runtime.
+[vars]
+TURNSTILE_SITE_KEY = "0x4AAAAAAFUZZa3FX2kHkq8R"
+NODE_VERSION = "22"
