@@ -1,138 +1,214 @@
 <section class="faq-section">
         <h1>Frequently Asked Questions</h1>
         <p>Welcome to StudyMap! Below are answers to common questions about getting started and using key features. If you don't see your question, check the in-app Settings or contact <a href="mailto:support@momentum-apps.com">support@momentum-apps.com</a>.</p>
-
-        <!-- Deck and Card Management -->
         <h2>Deck and Card Management</h2>
         <details>
-            <summary>How do I create a new deck?</summary>
-            <p>Tap the "+" button on the Decks screen (bottom navigation). Enter a name for your deck (e.g., "Biology Basics") in the text field, then tap "Save." Your new deck will appear in the list, ready for cards.</p>
+        <summary>How do I create a new deck?</summary>
+        <p>Tap the "+" button on the Decks screen (bottom navigation). Enter a name for your deck (e.g., "Biology Basics") in the text field, and optionally type a Group name to file it with related decks, then tap "Save." Your new deck will appear in the list, ready for cards.</p>
         </details>
         <details>
-            <summary>How do I add a card to a deck?</summary>
-            <p>Open a deck from the Decks screen, then tap the "+" button. Fill in the "Front" (question or prompt) and "Back" (answer or explanation) fields. You can also optionally set a difficulty level (Learning, Familiar, or Confident) from the dropdown. Tap "Save" to add the card.</p>
+        <summary>How do I add a card to a deck?</summary>
+        <p>Open a deck from the Decks screen, then tap the "+" button. Fill in the "Front" (question or prompt) and "Back" (answer or explanation) fields. You can also optionally set a difficulty level (Learning, Familiar, or Confident) from the dropdown, and open "Language details (optional)" to add pronunciation and an example sentence. Tap "Save" to add the card.</p>
         </details>
         <details>
-            <summary>What are Rich Flashcards?</summary>
-            <p>Rich Flashcards are an enhanced card format designed for language learning. In addition to the standard front and back, they support four optional fields: Pronunciation (e.g., pinyin for Chinese, rōmaji for Japanese), Example Sentence (a sentence in the target language), Example Sentence Pronunciation (the romanised pronunciation of the example), and Example Translation (the sentence translated into your language). These extra fields are displayed automatically during review when present, giving you full context for each word. Rich cards are most commonly imported from the pre-made deck Shop or via a JSON file.</p>
+        <summary>What are Rich Flashcards?</summary>
+        <p>Rich Flashcards are an enhanced card format designed for language learning. In addition to the standard front and back, they support four optional fields: Pronunciation (e.g., pinyin for Chinese, rōmaji for Japanese), Example Sentence (a sentence in the target language), Example Sentence Pronunciation (the romanised pronunciation of the example), and Example Translation (the sentence translated into your language). These extra fields are displayed automatically during review when present, giving you full context for each word. Rich cards come from the pre-made deck Shop, or you can create them yourself: add the fields when creating a card, or include them in a JSON file or in columns 3–6 of a CSV/Excel file.</p>
         </details>
         <details>
-            <summary>How do I edit or delete a card?</summary>
-            <p>In a deck's card list, long-press a card or tap the edit icon. Update the front, back, difficulty, or any rich fields as needed, then tap "Update." To delete, use the overflow menu (three dots) on the card and select "Delete." Confirm to remove it permanently.</p>
+        <summary>How do I edit or delete a card?</summary>
+        <p>In a deck's card list, long-press a card or tap the edit icon. Update the front, back, difficulty, or any rich fields as needed, then tap "Update." To delete, use the overflow menu (three dots) on the card and select "Delete." Confirm to remove it permanently.</p>
         </details>
         <details>
-            <summary>How do I edit or delete a deck?</summary>
-            <p>From the Decks screen, long-press a deck or tap its overflow menu. Select "Edit" to rename it or "Delete" to remove it and all its cards permanently. Deletions cannot be undone, so make sure you have a backup (e.g., the original import file) if needed.</p>
+        <summary>How do I edit or delete a deck?</summary>
+        <p>From the Decks screen, tap a deck's overflow menu (three dots). Select "Modify" to rename it or change its group, "Statistics" to see its study stats, or "Delete" to remove it and all its cards permanently, including review progress. To act on several decks at once, long-press a deck to start selecting, then assign the selected decks to a group or delete them. Deletions cannot be undone, so make sure you have a backup (e.g., the original import file) if needed. Decks from the Shop can be downloaded again — see "I deleted a Shop deck. Can I get it back?" below.</p>
         </details>
-
-        <!-- Importing Decks -->
+        <details>
+        <summary>How do I group and pin decks?</summary>
+        <p>Give decks the same Group name (via "Modify," or by selecting several decks and choosing "Assign Group") and they appear together on the Decks screen in a section you can expand or collapse. Shop decks are grouped automatically (e.g., "HSK · Chinese"). Tap the pin icon on a deck to keep it in the Pinned section at the top of the list.</p>
+        </details>
+        <details>
+        <summary>Where can I see my study statistics?</summary>
+        <p>Open a deck's overflow menu and tap "Statistics." The statistics page shows your study streaks, retention, and how often you use each answer button (Again, Hard, Good, Easy) in SRS Review.</p>
+        </details>
         <h2>Importing Decks</h2>
         <details>
-            <summary>What file formats can I import?</summary>
-            <p>StudyMap supports three formats: CSV (.csv), Excel (.xls or .xlsx), and JSON (.json). JSON is the recommended format for language decks because it supports Rich Flashcard fields natively and handles complex characters without formatting issues. CSV and Excel work well for simple two-column (front/back) decks.</p>
+        <summary>What file formats can I import?</summary>
+        <p>StudyMap supports three formats: CSV (.csv), Excel (.xls or .xlsx), and JSON (.json). JSON is the recommended format for language decks because it supports Rich Flashcard fields natively and handles complex characters without formatting issues. CSV and Excel work well for simple front/back decks, and can also carry the optional rich fields in extra columns.</p>
         </details>
         <details>
-            <summary>How do I import a CSV or Excel file?</summary>
-            <p>From the Decks screen, tap the import icon or go to Import via the menu. Tap "Select File" and choose your CSV or Excel file. The first row is treated as a header and skipped automatically. Column 1 is the card front and column 2 is the back — both are required. Columns 3–6 are optional and map to Pronunciation, Example Sentence, Example Sentence Pronunciation, and Example Translation in that order. Preview the cards, edit the deck name if needed, then tap "Save." Rows with a blank front or back are silently skipped.</p>
+        <summary>Do I need to give StudyMap storage permission to import files?</summary>
+        <p>No. StudyMap uses the Android system file picker, so it can only read the file you choose. The app does not ask for storage permissions.</p>
         </details>
         <details>
-            <summary>How do I import a JSON file?</summary>
-            <p>Tap "Select File" on the Import screen and pick your .json file. StudyMap automatically detects the file shape — it accepts three formats. A single-deck object (an object with a "cards" array) imports as one deck. A bundle (an object with a "decks" array) imports all decks at once, each keeping its own name. A raw card array (a bare JSON array) imports as a single deck named after the filename. After selecting the file you will see a preview of the cards or, for bundles, a summary showing how many decks and total cards will be created. Tap "Save" to confirm.</p>
+        <summary>How do I import a CSV or Excel file?</summary>
+        <p>From the Decks screen, tap the import icon or go to Import via the menu. Tap "Select File" and choose your CSV or Excel file (for Excel, the first sheet is used). Column 1 is the card front and column 2 is the back — both are required. Columns 3–6 are optional and map to Pronunciation, Example Sentence, Example Sentence Pronunciation, and Example Translation in that order. Preview the cards, edit the deck name if needed, then tap "Save" — all cards are saved in one go.</p>
         </details>
         <details>
-            <summary>What does a JSON card look like?</summary>
-            <p>Only "front" and "back" are required. Rich language fields are optional. A full example looks like this: <br><br>
-            <code>{ "front": "学生", "back": "student", "pronunciation": "xuéshēng", "exampleSentence": "她是一个好学生。", "exampleSentencePronunciation": "Tā shì yīgè hǎo xuéshēng.", "exampleTranslation": "She is a good student." }</code>
-            <br><br>
-            Legacy wordlist shapes that use "hanzi", "pinyin", and "translations" fields are also supported automatically.</p>
+        <summary>Does my CSV or Excel file need a header row?</summary>
+        <p>No, a header row is optional. StudyMap detects it automatically: the first row is skipped only when its first two cells look like column labels (for example "Front" and "Back," or "Word" and "Translation"). If your file starts straight away with a real card, that card is kept. Blank rows, and rows missing a front or back, are skipped, so a stray empty line won't stop the import. An example file:</p>
+        <pre><code>front,back,pronunciation,example
+学生,student,xuéshēng,她是一个好学生。
+老师,teacher,lǎoshī,
+</code></pre>
         </details>
         <details>
-            <summary>What is a Bundle import?</summary>
-            <p>A bundle is a single JSON file that contains multiple decks — for example, all six HSK levels in one file. When you import a bundle, StudyMap creates each deck separately in your library, named exactly as specified in the file. You will see a summary screen listing all the decks and their card counts before you confirm. Bundles are the format used by pre-made language packs purchased from the Shop.</p>
+        <summary>How do I import a JSON file?</summary>
+        <p>Tap "Select File" on the Import screen and pick your .json file. StudyMap automatically detects the file shape — it accepts three formats. A single-deck object (an object with a "cards" array) imports as one deck. A bundle (an object with a "decks" array) imports all decks at once, each keeping its own name. A raw card array (a bare JSON array) imports as a single deck named after the filename. After selecting the file you will see a preview of the cards or, for bundles, a summary showing how many decks and total cards will be created. Tap "Save" to confirm.</p>
         </details>
-
-        <!-- Pre-Made Deck Shop -->
+        <details>
+        <summary>What does a JSON card look like?</summary>
+        <p>Only "front" and "back" are required. Rich language fields are optional. A full example looks like this: <code>{ "front": "学生", "back": "student", "pronunciation": "xuéshēng", "exampleSentence": "她是一个好学生。", "exampleSentencePronunciation": "Tā shì yīgè hǎo xuéshēng.", "exampleTranslation": "She is a good student." }</code> Legacy wordlist shapes that use "hanzi", "pinyin", and "translations" fields are also supported automatically.</p>
+        </details>
+        <details>
+        <summary>What is a Bundle import?</summary>
+        <p>A bundle is a single JSON file that contains multiple decks — for example, several levels of a course in one file. When you import a bundle, StudyMap creates each deck separately in your library, named exactly as specified in the file. You will see a summary screen listing all the decks and their card counts before you confirm. Bundles are a handy way to share or back up several of your own decks in one file.</p>
+        </details>
         <h2>Pre-Made Deck Shop</h2>
         <details>
-            <summary>What is the Shop?</summary>
-            <p>The Shop is an in-app store where you can purchase professionally prepared language flashcard decks. All decks in the Shop are Rich Flashcards — they include the target-language word, its pronunciation, an example sentence in context, the sentence's pronunciation, and an English translation. Currently available languages are Chinese (HSK) and Korean (TOPIK), with Japanese and Spanish coming soon.</p>
+        <summary>What is the Shop?</summary>
+        <p>The Shop is an in-app store where you can get professionally prepared language flashcard decks. Paid decks are Rich Flashcards — they include the target-language word, its pronunciation, and example sentences in context with translations. Currently available: Chinese (HSK 2.0 levels 1–6, with English, Spanish, or Korean translations) and Korean (TOPIK I, with English), plus free alphabet decks for Japanese (Hiragana and Katakana) and Korean (Hangeul). Japanese vocabulary (JLPT) decks and Spanish (DELE) decks are planned / coming soon.</p>
         </details>
         <details>
-            <summary>What Chinese (HSK) decks are available?</summary>
-            <p>StudyMap offers all six HSK levels aligned to the official 2021 HSK 3.0 standard, available in three target languages: Chinese → English, Chinese → Spanish, and Chinese → Korean. Each level is sold individually (HSK 1 and 2 at $0.99, HSK 3 and 4 at $1.99, HSK 5 and 6 at $2.99) or as a Complete Bundle covering all six levels for $9.99 — saving around 45% compared to buying levels individually. Card counts per level: HSK 1 (150 cards), HSK 2 (150 cards), HSK 3 (300 cards), HSK 4 (600 cards), HSK 5 (1,300 cards), HSK 6 (2,500 cards).</p>
+        <summary>What free decks are available?</summary>
+        <p>Five free alphabet decks: Hiragana (Basic, 46 characters), Hiragana (Complete, 104 characters), Katakana (Basic, 46 characters), Katakana (Complete, 104 characters), and Hangeul (40 cards). Find them under Japanese or Korean → Alphabets &amp; Scripts in the Shop and tap "Download Free." They're included in the app, so no purchase is needed.</p>
         </details>
         <details>
-            <summary>What Korean (TOPIK) decks are available?</summary>
-            <p>The Korean TOPIK I deck covers approximately 1,670 beginner-level Korean → English vocabulary words with romanisation and example sentences, priced at $4.50. More TOPIK levels and target languages are planned for future updates.</p>
+        <summary>What Chinese (HSK 2.0) decks are available?</summary>
+        <p>StudyMap offers all six HSK 2.0 levels (HSK 1–6), available in three target languages: Chinese → English, Chinese → Spanish, and Chinese → Korean. Each level is sold individually (HSK 1 and 2 at USD $0.99, HSK 3 and 4 at USD $1.99, HSK 5 and 6 at USD $2.99) or as a Complete Bundle covering all six levels for USD $9.99 — about USD $1.95 (roughly 16%) less than buying all six levels individually (USD $11.94). Card counts per level: HSK 1 (150 cards), HSK 2 (150 cards), HSK 3 (300 cards), HSK 4 (600 cards), HSK 5 (1,300 cards), HSK 6 (2,500 cards) — 5,000 cards in total. Prices are shown in USD; Google Play converts them to your local currency at checkout.</p>
         </details>
         <details>
-            <summary>What languages are coming soon to the Shop?</summary>
-            <p>Japanese (JLPT) and Spanish (DELE) decks are shown in the Shop as "Coming Soon." These tiles are visible so you can see what's planned, but they cannot be purchased yet. We will update the app as new content becomes available.</p>
+        <summary>What Korean (TOPIK) decks are available?</summary>
+        <p>The Korean TOPIK I deck covers approximately 1,670 beginner-level (TOPIK I, Levels 1–2) Korean → English vocabulary words with romanisation and example sentences, priced at USD $4.50. More TOPIK levels and target languages are planned for future updates.</p>
         </details>
         <details>
-            <summary>How do I purchase a deck?</summary>
-            <p>Open the Shop tab (bottom navigation), tap the language you want to study, then browse the available decks and bundles. Tap a card to see a detailed preview with sample cards, then tap "Buy" to complete the purchase through Google Play. All payments are handled securely by Google Play Billing — StudyMap never processes or stores your payment details.</p>
+        <summary>What languages are coming soon to the Shop?</summary>
+        <p>Japanese vocabulary (JLPT) decks are planned / coming soon. Japanese is already in the Shop with the free Hiragana and Katakana alphabet decks. Spanish (DELE) decks are also coming soon; the Spanish tile is shown as "Coming Soon" so you can see what's planned, but it can't be purchased yet. We will update the app as new content becomes available.</p>
         </details>
         <details>
-            <summary>I purchased a deck. How do I download it?</summary>
-            <p>After a successful purchase, the button on the deck card changes to "Download." Tap it to download your deck files. A progress bar shows the download status. Once complete, the deck(s) will appear in your Decks screen, ready to study. If you close the app before downloading, the Download button will still be available the next time you open the Shop — your purchase is remembered.</p>
+        <summary>How do I purchase a deck?</summary>
+        <p>Open the Shop tab (bottom navigation), tap the language you want to study, then browse the available decks and bundles. Tap a card to see a detailed preview with sample cards, then tap "Buy" to complete the purchase through Google Play. All payments are handled securely by Google Play Billing — StudyMap never processes or stores your payment details. You don't need a StudyMap account; purchases are linked to your Google Play account.</p>
         </details>
         <details>
-            <summary>I switched devices or reinstalled the app. How do I restore my purchases?</summary>
-            <p>Tap "Restore Purchases" in the top-right corner of the Shop home screen. StudyMap will query Google Play for all purchases associated with your account and mark them as owned. You can then tap "Download" on each deck to re-download the cards. Note that the card data itself is not backed up to the cloud — only your purchase entitlement is restored through Google Play.</p>
+        <summary>I purchased a deck. How do I download it?</summary>
+        <p>After a successful purchase, the button on the deck card changes to "Download." Tap it to download your deck files. A progress bar shows the download status. Once complete, the deck(s) will appear in your Decks screen, ready to study. If you close the app before downloading, the Download button will still be available the next time you open the Shop — your purchase is remembered.</p>
         </details>
         <details>
-            <summary>If I buy the Complete Bundle, do I also own the individual levels?</summary>
-            <p>Yes. When you own the Complete Bundle for a language pair (e.g., HSK Complete Bundle — Chinese → English), all six individual level products for that pair are automatically marked as owned. You will not see a "Buy" button for any of those individual levels.</p>
+        <summary>My purchase went through but the deck didn't download. What should I do?</summary>
+        <p>Check your internet connection, then open the Shop and tap "Retry Download" (or "Download") on the deck. If the button doesn't appear, tap "Restore" on the Shop home screen first. Your purchase is only confirmed with Google Play after the deck has been added to your Decks screen. If the deck is never delivered, Google Play automatically refunds the unconfirmed purchase after about 3 days. If you still have trouble, email <a href="mailto:support@momentum-apps.com">support@momentum-apps.com</a> with the deck name (please don't send payment card details).</p>
         </details>
         <details>
-            <summary>What is the refund policy for Shop purchases?</summary>
-            <p>All purchases are processed by Google Play and are subject to Google Play's refund policy. You can request a refund through Google Play within the eligible window — typically within 48 hours of purchase. To request a refund, go to play.google.com/store/account/orderhistory on your device, find the relevant order, and tap "Request a refund." StudyMap and Momentum Apps Limited do not process refunds directly. If you have trouble with a purchase, contact us at <a href="mailto:support@momentum-apps.com">support@momentum-apps.com</a> and we will do our best to assist.</p>
+        <summary>I switched devices or reinstalled the app. How do I restore my purchases?</summary>
+        <p>Make sure you're signed in to Google Play with the same Google account you bought with, then tap "Restore" at the top of the Shop home screen. StudyMap will query Google Play for all purchases associated with your account and mark them as owned. You can then tap "Download" on each deck to re-download the cards. StudyMap has no account or cloud sync of its own. If Android backup is turned on for your device, Android may restore your decks and study progress from your Google account backup when you reinstall; otherwise, re-downloaded Shop decks start with fresh progress, and decks you created need to be imported again from your original files.</p>
         </details>
-
-        <!-- Review Modes -->
+        <details>
+        <summary>I deleted a Shop deck. Can I get it back?</summary>
+        <p>Yes. Purchased decks (and the free alphabet decks) can be downloaded again at any time at no extra cost — open the deck in the Shop and tap the download button. Downloading again only adds decks that are missing; decks you still have, and their study progress, are left untouched.</p>
+        </details>
+        <details>
+        <summary>Will a Shop download overwrite my own deck with the same name?</summary>
+        <p>No. Shop imports never overwrite or delete decks you created or imported yourself, even if they share a name.</p>
+        </details>
+        <details>
+        <summary>If I buy the Complete Bundle, do I also own the individual levels?</summary>
+        <p>Yes. When you own the Complete Bundle for a language pair (e.g., HSK Complete Bundle — Chinese → English), all six individual level products for that pair are automatically marked as owned and can be downloaded. You will not see a "Buy" button for any of those individual levels.</p>
+        </details>
+        <details>
+        <summary>What is the refund policy for Shop purchases?</summary>
+        <p>All purchases are processed by Google Play and are subject to Google Play's refund policy. You can request a refund through Google Play within the eligible window — typically within 48 hours of purchase. To request a refund, go to <a href="https://play.google.com/store/account/orderhistory" target="_blank">play.google.com/store/account/orderhistory</a> on your device, find the relevant order, and tap "Request a refund." If a purchased deck is never delivered, Google Play refunds the purchase automatically after about 3 days. StudyMap and Momentum Apps Limited do not process refunds directly. If you have trouble with a purchase, contact us at <a href="mailto:support@momentum-apps.com">support@momentum-apps.com</a> and we will do our best to assist.</p>
+        </details>
         <h2>Review Modes</h2>
         <details>
-            <summary>What review modes are available?</summary>
-            <p>StudyMap offers three review modes: Manual Review for free-form self-assessment, Dictation Review for active recall by typing or speaking, and SRS Review which uses a spaced repetition algorithm to schedule cards based on your performance over time.</p>
+        <summary>What review modes are available?</summary>
+        <p>StudyMap offers three review modes: Manual Review for free-form self-assessment (flip cards and rate them Learning, Familiar, or Confident), Dictation Review for active recall by typing your answer, and SRS Review which uses the SM-2 spaced repetition algorithm to schedule cards based on your performance over time (rate them Again, Hard, Good, or Easy).</p>
         </details>
         <details>
-            <summary>How do I start a Manual Review session?</summary>
-            <p>Go to the Review tab (bottom navigation) and tap "Manual Review." In the setup sheet, select one or more decks, set the number of cards using the slider, choose which difficulty levels to include (Learning, Familiar, Confident, or all), and optionally toggle Reverse Order to show the back of the card as the prompt. Tap "Get Started" to begin. Swipe or flip cards at your own pace — this mode does not affect SRS scheduling.</p>
+        <summary>How do I start a Manual Review session?</summary>
+        <p>Go to the Review tab (bottom navigation) and tap "Manual Review." In the setup sheet, select one or more decks, choose how many cards to review (All or a custom number), choose the Direction (Front → Back, or Back → Front to show the back of the card as the prompt), and optionally enter a Session Seed to get a repeatable card order. Tap "Get Started" to begin. Flip cards at your own pace — this mode does not affect SRS scheduling. To study the exact same cards in the same order again, tap "Repeat Last Session."</p>
         </details>
         <details>
-            <summary>How do I start a Dictation Review session?</summary>
-            <p>From the Review tab, tap "Dictation Review" and configure the same options as Manual Review (decks, card count, difficulty, reverse order). In this mode you type or speak your answer before flipping the card to check it — it is designed to strengthen active recall. Like Manual Review, Dictation Review does not update SRS scheduling.</p>
+        <summary>How do I start a Dictation Review session?</summary>
+        <p>From the Review tab, tap "Dictation Review" and configure the same options as Manual Review (decks, card count, direction, optional seed). In this mode you type your answer before checking it — it is designed to strengthen active recall. If audio is enabled, you can play the card's pronunciation using your device's text-to-speech. "Repeat Last Session" is available here too, which is handy for retrying a dictation test. Like Manual Review, Dictation Review does not update SRS scheduling.</p>
         </details>
         <details>
-            <summary>How does SRS Review work?</summary>
-            <p>SRS (Spaced Repetition System) Review uses the SM-2 algorithm to schedule each card at the optimal moment for long-term retention. Cards that you find easy are shown less frequently; cards you struggle with come back sooner. From the Review tab, tap "SRS Review," select your decks, and tap "Get Started." Each session presents cards that are due today (based on their scheduled interval). After revealing the answer, rate yourself using four buttons: Again (complete blank — card returns in 10 minutes), Hard (correct but difficult — interval shrinks), Good (correct with effort — standard progression), Easy (effortless recall — interval grows faster). The app shows the next scheduled interval beneath each button so you know exactly when a card will return.</p>
+        <summary>How does SRS Review work?</summary>
+        <p>SRS (Spaced Repetition System) Review uses the SM-2 algorithm to schedule each card at the optimal moment for long-term retention. Cards that you find easy are shown less frequently; cards you struggle with come back sooner. From the Review tab, tap "SRS Review," select your deck, and start your session. Each session presents cards that are due today (based on their scheduled interval), plus new cards up to your daily limit for that deck. After revealing the answer, rate yourself using four buttons: Again (complete blank — card returns in 10 minutes), Hard (correct but difficult — interval shrinks), Good (correct with effort — standard progression), Easy (effortless recall — interval grows faster). The app shows the next scheduled interval beneath each button so you know exactly when a card will return.</p>
         </details>
         <details>
-            <summary>How are SRS intervals calculated?</summary>
-            <p>StudyMap uses an SM-2–based algorithm. New cards start with no interval. Rating a new card Good schedules it for 1 day; Easy schedules it for 4 days. From the second review onward, Good applies the current interval multiplied by the card's ease factor (starting at 2.5). Easy adds a further 1.3× boost and increases the ease factor. Hard reduces the interval to 60% of the current value and lowers the ease factor slightly. Again resets the card and shows it again in 10 minutes, lowering the ease factor. The ease factor is clamped between 1.3 and 2.5 to prevent intervals from becoming impractically short or long. As a card accumulates successful reviews, its difficulty label updates automatically: under 7 days = Learning, 7–21 days = Familiar, over 21 days = Confident.</p>
+        <summary>How are SRS intervals calculated?</summary>
+        <p>StudyMap uses an SM-2–based algorithm. New cards start with no interval. Rating a new card Good schedules it for 1 day; Easy schedules it for 4 days; Hard schedules it for 1 day. On the second review, Good schedules 4 days and Easy 7 days. After that, Good multiplies the current interval by the card's ease factor (starting at 2.5), and Easy applies a further 1.3× boost and raises the ease factor slightly. Hard reduces the interval to 60% of the current value (minimum 1 day) and lowers the ease factor slightly. Again resets the card and shows it again in 10 minutes, lowering the ease factor. The ease factor is clamped between 1.3 and 2.5 to prevent intervals from becoming impractically short or long. As a card accumulates successful reviews, its difficulty label updates automatically: under 7 days = Learning, 7–21 days = Familiar, over 21 days = Confident.</p>
         </details>
         <details>
-            <summary>Can I reverse the card direction during SRS Review?</summary>
-            <p>Yes. During an SRS session, tap the settings icon (gear) in the top-right corner of the review screen. You can toggle "Reverse Card Order" to show the translation as the prompt instead of the target-language word. You can also toggle "Show Pronunciation" to hide or reveal the romanisation on the back of the card — useful for practising reading without pronunciation hints.</p>
+        <summary>Can I reverse the card direction during SRS Review?</summary>
+        <p>Yes. You can turn on "Show the back of the card first" in the SRS setup sheet, or, during an SRS session, tap the settings icon (gear) in the top-right corner of the review screen. You can toggle "Reverse Card Order" to show the translation as the prompt instead of the target-language word. You can also toggle "Show Pronunciation" to hide or reveal the romanisation on the back of the card — useful for practising reading without pronunciation hints.</p>
         </details>
         <details>
-            <summary>How do I control how many new and due cards appear in SRS Review?</summary>
-            <p>Go to Settings → SRS Settings. Use the "New cards per day" slider (5–100) to cap how many brand-new cards are introduced per session. Use the "Max reviews per day" slider (20–500) to cap the total number of cards reviewed in a single day across all sessions. These limits help prevent overwhelming review backlogs.</p>
+        <summary>How do I control how many new and due cards appear in SRS Review?</summary>
+        <p>Go to Settings → Spaced Repetition (SRS). Use the "New Words Per Day (per deck)" slider (5–100) to cap how many brand-new cards each deck introduces per day. Use the "Max Reviews Per Day (per deck)" slider (20–500) to cap how many review cards each deck shows per day. These limits apply to each deck separately and reset every day, so studying three decks with a limit of 20 new cards can introduce up to 20 new cards from each deck. See "How do the daily limits work?" below.</p>
         </details>
-
-        <!-- Settings -->
+        <details>
+        <summary>How do the daily limits work?</summary>
+        <p>Limits are counted per deck, per calendar day, and reset at your local midnight. Every new card you introduce and every review you rate counts against that deck's limit for the day, so starting a second SRS session on the same day continues from where you left off rather than giving you a fresh allowance. Cards you're still learning (for example, cards you just rated Again) are not capped, so you can always finish them. To study more today, raise the limit in Settings.</p>
+        </details>
         <h2>Settings</h2>
         <details>
-            <summary>How do I change the app theme?</summary>
-            <p>Open Settings (bottom navigation) and tap the "Dark Mode" card. Choose System (follows your device setting), Light, or Dark. The app restarts immediately to apply the change. This affects backgrounds, cards, and all UI elements.</p>
+        <summary>How do I change the app theme?</summary>
+        <p>Open Settings (bottom navigation) and tap the "Dark Mode" card. Choose System Default (follows your device setting), Light, or Dark. The app restarts immediately to apply the change. This affects backgrounds, cards, and all UI elements.</p>
         </details>
         <details>
-            <summary>How do I change the app language?</summary>
-            <p>In Settings, tap the "Language" card. Select English, Spanish, or Korean (한국어). The app restarts to update all text including card labels, menus, and review prompts. Your language choice persists across sessions.</p>
+        <summary>How do I change the app language?</summary>
+        <p>In Settings, tap the "Language" card. Select English, Spanish (Español), or Korean (한국어). The app restarts to update all text including card labels, menus, and review prompts. Your language choice persists across sessions.</p>
         </details>
         <details>
-            <summary>How do I customise SRS daily limits?</summary>
-            <p>In Settings, tap "SRS Settings." Adjust "New cards per day" (default 20, range 5–100) and "Max reviews per day" (default 100, range 20–500). These settings apply globally across all decks. Tap Save to apply. If you want to study more intensively, increase both sliders; if you want to avoid large daily queues, reduce them.</p>
+        <summary>How do I customise SRS daily limits?</summary>
+        <p>In Settings, tap "Spaced Repetition (SRS)." Adjust "New Words Per Day (per deck)" (default 20, range 5–100) and "Max Reviews Per Day (per deck)" (default 100, range 20–500). The same limits apply to every deck, counted separately for each deck. Changes are saved as you move the sliders; tap "Done" to close. If you want to study more intensively, increase both sliders; if you want to avoid large daily queues, reduce them.</p>
         </details>
-    </section>
+        <h2>Privacy, Data, and Compatibility</h2>
+        <details>
+        <summary>Do I need an account?</summary>
+        <p>No. StudyMap has no account or sign-in. Your decks, cards, study progress, and settings are stored only on your device. Shop purchases are linked to your Google Play account.</p>
+        </details>
+        <details>
+        <summary>Does StudyMap collect analytics or show ads?</summary>
+        <p>No. StudyMap contains no analytics, no crash reporting, and no ads. The only information the app sends to our service is what's needed to verify and deliver paid Shop decks. See our <a href="/apps/studymap-flashcards/privacy.html">Privacy Policy</a> for details.</p>
+        </details>
+        <details>
+        <summary>Are my decks backed up?</summary>
+        <p>StudyMap does not upload your decks to our servers. If Android backup is turned on for your device, Android may back up StudyMap's data to your own Google account and restore it when you reinstall or set up a new device. We can't access that backup. For extra safety, keep your original import files.</p>
+        </details>
+        <details>
+        <summary>How do I delete my data?</summary>
+        <p>Go to <strong>Settings &gt; Privacy &gt; Delete my data</strong> ("Erase decks, progress, and settings on this device"):</p>
+        <ol>
+        <li>
+        <p>A dialog titled <strong>"Delete everything on this device?"</strong> lists what will be deleted:</p>
+        <ul>
+        <li>all decks and cards;</li>
+        <li>review history and SRS progress;</li>
+        <li>statistics and streaks;</li>
+        <li>settings and preferences, including daily study limits;</li>
+        <li>imported and downloaded decks stored on the device;</li>
+        <li>local records of which decks were imported.</li>
+        </ul>
+        <p>It also lists what is <strong>not</strong> affected:</p>
+        <ul>
+        <li>Your Google Play purchases stay on your Google account. You can restore or redownload them from the Shop.</li>
+        <li>An Android Auto Backup copy is managed by Google. Remove it via your phone's <strong>Settings &gt; Google &gt; Backup</strong> or at <a href="https://one.google.com/backup" target="_blank">https://one.google.com/backup</a>.</li>
+        </ul>
+        <p>Tap <strong>Cancel</strong> to stop, or <strong>Continue</strong>.</p>
+        </li>
+        <li>
+        <p>You'll see <strong>"This cannot be undone."</strong> Type <strong>DELETE</strong> and tap the red <strong>"Delete my data"</strong> button (you can still tap <strong>Cancel</strong>).</p>
+        </li>
+        <li>
+        <p>StudyMap shows <strong>"Deleting your data…"</strong> and then <strong>"Your data has been deleted."</strong> Tap <strong>"Start fresh"</strong> to restart the app.</p>
+        </li>
+        </ol>
+        <p>You can also uninstall the app, or clear its storage in your device settings (on most devices: Settings → Apps → StudyMap → Storage).</p>
+        <p>To ask us to delete any data Momentum Apps holds about you, such as your support emails or purchase-verification logs, email <a href="mailto:support@momentum-apps.com">support@momentum-apps.com</a>.</p>
+        </details>
+        <details>
+        <summary>Which Android versions are supported?</summary>
+        <p>StudyMap requires Android 8.0 or later.</p>
+        </details>
+        <p><a href="mailto:support@momentum-apps.com">support@momentum-apps.com</a></p>
+</section>

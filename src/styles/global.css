@@ -976,6 +976,29 @@ textarea:user-invalid,
   word-break: break-word;
 }
 
+.prose pre {
+  background: var(--soft);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  margin: 0.7rem 0;
+}
+
+.prose pre code {
+  display: block;
+  white-space: pre-wrap;
+  word-break: normal;
+}
+
+.prose li > p {
+  margin: 0.35rem 0;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin: 0.35rem 0 0.5rem;
+}
+
 .app-hero {
   padding: 56px 0 12px;
 }
