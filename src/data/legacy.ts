@@ -68,7 +68,7 @@ export const legacyDocs: LegacyDoc[] = [
     page: "privacy",
     title: "Privacy Policy | StudyMap - Flashcards by Momentum Apps",
     description:
-      "Read the privacy policy for StudyMap - Flashcards by Momentum Apps. Learn how we handle analytics, purchase verification, and your local flashcard data.",
+      "Read the privacy policy for StudyMap - Flashcards by Momentum Apps. Learn how we handle purchase verification, app integrity, and the flashcard data stored on your device.",
     file: "flashcards-privacy.html",
   },
   {
