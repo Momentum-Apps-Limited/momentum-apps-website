@@ -1,6 +1,5 @@
 ---
 import Base from "../../../layouts/Base.astro";
-import AppDocLinks from "../../../components/AppDocLinks.astro";
 import PlayBadge from "../../../components/PlayBadge.astro";
 import PromoSection from "../../../components/PromoSection.astro";
 import ScreenshotGallery from "../../../components/ScreenshotGallery.astro";
@@ -64,8 +63,4 @@ const { app } = Astro.props;
       </div>
     ))
   }
-
-  <div class="container app-docs">
-    <AppDocLinks app={app} />
-  </div>
 </Base>

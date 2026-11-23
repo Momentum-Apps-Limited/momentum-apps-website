@@ -300,3 +300,9 @@ export function policyLinks(app: AppEntry): { href: string; label: string }[] {
   }
   return links;
 }
+
+export function appFromPath(pathname: string): (AppEntry & { slug: string }) | undefined {
+  const match = pathname.match(/^\/apps\/([^/]+)/);
+  if (!match) return undefined;
+  return apps.find((app): app is AppEntry & { slug: string } => app.slug === match[1]);
+}

@@ -1018,8 +1018,7 @@ a.footer-heading:hover {
   padding: 36px 0 0;
 }
 
-.page-intro .container,
-.container.app-docs {
+.page-intro .container {
   max-width: 46rem;
 }
 
@@ -1049,10 +1048,6 @@ a.footer-heading:hover {
 .app-back:hover {
   color: var(--ink);
   text-decoration: underline;
-}
-
-.app-docs {
-  padding-bottom: 64px;
 }
 
 .doc-links ul {
@@ -1126,7 +1121,7 @@ a.footer-heading:hover {
 
 .prose {
   max-width: 46rem;
-  padding-bottom: 24px;
+  padding-bottom: 64px;
 }
 
 .prose h1 {

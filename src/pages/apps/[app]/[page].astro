@@ -2,7 +2,6 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import Base from "../../../layouts/Base.astro";
-import AppDocLinks from "../../../components/AppDocLinks.astro";
 import { apps, appHome } from "../../../data/apps";
 import { legacyDocs } from "../../../data/legacy";
 
@@ -35,11 +34,4 @@ const html = readFileSync(path.join(process.cwd(), "src/content/legacy", doc.fil
     </div>
   </section>
   <article class="container prose" set:html={html} />
-  {
-    app && (
-      <div class="container app-docs">
-        <AppDocLinks app={app} />
-      </div>
-    )
-  }
 </Base>
