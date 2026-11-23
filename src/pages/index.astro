@@ -1,6 +1,5 @@
 ---
 import Base from "../layouts/Base.astro";
-import ContactForm from "../components/ContactForm.astro";
 import Icon from "../components/Icon.astro";
 import PlayBadge from "../components/PlayBadge.astro";
 import ScreenshotGallery from "../components/ScreenshotGallery.astro";
@@ -47,10 +46,7 @@ const software = JSON.stringify({
           Learn a language through stories, keep a habit, or plan your study. We make simple tools that help you start and keep going.
         </p>
         <div class="actions">
-          <a class="btn btn-primary" href={company.storyLingua} target="_blank" rel="noopener noreferrer">
-            Try StoryLingua<span class="sr-only"> (opens in a new tab)</span>
-          </a>
-          <a class="btn btn-secondary" href="#apps">See our apps</a>
+          <a class="btn btn-primary" href="#apps">See our apps</a>
         </div>
       </div>
       <div class="reader reveal" aria-hidden="true">
@@ -117,20 +113,20 @@ const software = JSON.stringify({
 
   <section class="section" id="about">
     <div class="container">
-      <h2>Apps that help you build momentum</h2>
-      <p class="sub">Learn a language through stories, keep a habit, or plan your study. Come back tomorrow and pick up where you left off.</p>
+      <h2>About Momentum Apps</h2>
+      <p class="sub">We're a small studio. We make simple tools that help you start, and keep going.</p>
       <div class="values">
         <article class="value reveal">
-          <h3>Stories, habits, and plans</h3>
-          <p>StoryLingua for reading, Habit Tracker for streaks, and StudyMap for flashcards and a study plan.</p>
+          <h3>Simple tools</h3>
+          <p>Each app has one clear job, so you can open it and know what to do.</p>
         </article>
         <article class="value reveal">
           <h3>Plain about privacy</h3>
           <p>Every app has its own privacy policy and terms, written for that app. We only collect what it needs to work.</p>
         </article>
         <article class="value reveal">
-          <h3>One job each</h3>
-          <p>Stories, flashcards, habits, and study plans. Simple tools you can come back to tomorrow.</p>
+          <h3>Built to come back to</h3>
+          <p>Small, focused apps you can pick up tomorrow and continue where you left off.</p>
         </article>
       </div>
     </div>
@@ -138,7 +134,15 @@ const software = JSON.stringify({
 
   <section class="section" aria-label="Contact">
     <div class="container reveal">
-      <ContactForm />
+      <div class="contact-cta">
+        <h2>Get in touch</h2>
+        <p>
+          Questions, feedback, support, or partnerships. We usually reply within 2 business days.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/contact.html">Contact us</a>
+        </div>
+      </div>
     </div>
   </section>
 </Base>

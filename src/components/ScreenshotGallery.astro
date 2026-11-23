@@ -11,7 +11,13 @@ const { screenshots, name, variant } = Astro.props;
 const scrollable = variant === "phone" && screenshots.length > 1;
 ---
 
-<div class:list={["gallery", variant === "phone" ? "gallery-phone" : "gallery-browser"]}>
+<div
+  class:list={[
+    "gallery",
+    variant === "phone" ? "gallery-phone" : "gallery-browser",
+    scrollable && "is-scrollable",
+  ]}
+>
   {
     variant === "browser" && (
       <div class="browser-chrome" aria-hidden="true">
@@ -22,26 +28,90 @@ const scrollable = variant === "phone" && screenshots.length > 1;
       </div>
     )
   }
-  <ul
-    class="gallery-track"
-    tabindex={scrollable ? 0 : undefined}
-    aria-label={scrollable ? `${name} screenshots` : undefined}
-  >
+  <div class="gallery-viewport">
     {
-      screenshots.map((shot) => (
-        <li>
-          <div class={variant === "phone" ? "phone-frame" : "browser-shot"}>
-            <img
-              src={shot.src}
-              width={shot.width}
-              height={shot.height}
-              alt={shot.alt}
-              loading="lazy"
-              decoding="async"
+      scrollable && (
+        <button type="button" class="gallery-nav gallery-prev" aria-label={`Previous ${name} screenshot`}>
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M10 3 5 8l5 5"
             />
-          </div>
-        </li>
-      ))
+          </svg>
+        </button>
+      )
     }
-  </ul>
+    <ul
+      class="gallery-track"
+      tabindex={scrollable ? 0 : undefined}
+      aria-label={scrollable ? `${name} screenshots` : undefined}
+    >
+      {
+        screenshots.map((shot) => (
+          <li>
+            <div class={variant === "phone" ? "phone-frame" : "browser-shot"}>
+              <img
+                src={shot.src}
+                width={shot.width}
+                height={shot.height}
+                alt={shot.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    {
+      scrollable && (
+        <button type="button" class="gallery-nav gallery-next" aria-label={`Next ${name} screenshot`}>
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m6 3 5 5-5 5"
+            />
+          </svg>
+        </button>
+      )
+    }
+  </div>
 </div>
+
+<script>
+  function setupGalleries() {
+    for (const gallery of document.querySelectorAll(".gallery-phone.is-scrollable")) {
+      if (!(gallery instanceof HTMLElement) || gallery.dataset.galleryReady) continue;
+      gallery.dataset.galleryReady = "true";
+      const track = gallery.querySelector<HTMLElement>(".gallery-track");
+      const prev = gallery.querySelector<HTMLButtonElement>(".gallery-prev");
+      const next = gallery.querySelector<HTMLButtonElement>(".gallery-next");
+      if (!track) continue;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const step = () => Math.max(track.clientWidth * 0.7, 160);
+      const syncNav = () => {
+        const max = track.scrollWidth - track.clientWidth - 2;
+        if (prev) prev.disabled = track.scrollLeft <= 2;
+        if (next) next.disabled = track.scrollLeft >= max;
+      };
+      prev?.addEventListener("click", () => {
+        track.scrollBy({ left: -step(), behavior: reduceMotion ? "auto" : "smooth" });
+      });
+      next?.addEventListener("click", () => {
+        track.scrollBy({ left: step(), behavior: reduceMotion ? "auto" : "smooth" });
+      });
+      track.addEventListener("scroll", syncNav, { passive: true });
+      syncNav();
+    }
+  }
+
+  setupGalleries();
+</script>

@@ -1,5 +1,4 @@
 ---
-import { company } from "../data/apps";
 import { canonicalPath } from "../lib/urls";
 
 const path = canonicalPath(Astro.url.pathname);
@@ -21,12 +20,8 @@ const onContact = path === "/contact";
     </button>
     <nav id="site-nav" class="site-nav" aria-label="Primary">
       <a href="/#apps">Apps</a>
-      <a href="/#storylingua">StoryLingua</a>
       <a href="/#about">About</a>
       <a href="/contact.html" aria-current={onContact ? "page" : undefined}>Contact</a>
-      <a class="btn btn-primary" href={company.storyLingua} target="_blank" rel="noopener noreferrer">
-        Try StoryLingua<span class="sr-only"> (opens in a new tab)</span>
-      </a>
     </nav>
   </div>
 </header>

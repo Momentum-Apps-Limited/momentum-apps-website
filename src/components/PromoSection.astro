@@ -30,15 +30,6 @@ const { block, flip = false } = Astro.props;
       {
         block.features.map((feature, index) => (
           <li class="promo-item">
-            <img
-              class="promo-shot"
-              src={feature.screenshot.src}
-              width={feature.screenshot.width}
-              height={feature.screenshot.height}
-              alt={feature.screenshot.alt}
-              loading="lazy"
-              decoding="async"
-            />
             <div class="promo-copy">
               <h3>
                 <span class="promo-num">{String(index + 1).padStart(2, "0")}</span>
