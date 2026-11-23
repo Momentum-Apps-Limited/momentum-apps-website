@@ -1,9 +1,17 @@
 ---
-import { company } from "../data/apps";
-import { canonicalPath } from "../lib/urls";
+import { appFromPath, policyLinks } from "../data/apps";
+import { canonicalPath, isCurrent } from "../lib/urls";
 
 const path = canonicalPath(Astro.url.pathname);
+const app = appFromPath(path);
 const onContact = path === "/contact";
+const links = app
+  ? policyLinks(app)
+  : [
+      { href: "/#apps", label: "Apps" },
+      { href: "/#about", label: "About" },
+      { href: "/contact.html", label: "Contact" },
+    ];
 ---
 
 <a class="skip" href="#main">Skip to content</a>
@@ -19,14 +27,21 @@ const onContact = path === "/contact";
       <span class="bar" aria-hidden="true"></span>
       <span class="bar" aria-hidden="true"></span>
     </button>
-    <nav id="site-nav" class="site-nav" aria-label="Primary">
-      <a href="/#apps">Apps</a>
-      <a href="/#storylingua">StoryLingua</a>
-      <a href="/#about">About</a>
-      <a href="/contact.html" aria-current={onContact ? "page" : undefined}>Contact</a>
-      <a class="btn btn-primary" href={company.storyLingua} target="_blank" rel="noopener noreferrer">
-        Try StoryLingua<span class="sr-only"> (opens in a new tab)</span>
-      </a>
+    <nav id="site-nav" class="site-nav" aria-label={app ? `${app.name} pages` : "Primary"}>
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={
+              (app ? isCurrent(path, link.href) : link.href === "/contact.html" && onContact)
+                ? "page"
+                : undefined
+            }
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </nav>
   </div>
 </header>

@@ -429,6 +429,9 @@ h1 em {
   border-radius: 18px;
   padding: 12px;
   box-shadow: 0 24px 50px rgba(8, 40, 48, 0.16);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .browser-chrome {
@@ -439,6 +442,7 @@ h1 em {
   color: #d7f4f8;
   font-size: 0.82rem;
   font-weight: 600;
+  flex: none;
 }
 
 .browser-chrome i {
@@ -456,10 +460,25 @@ h1 em {
   white-space: nowrap;
 }
 
+.gallery-viewport {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+
 .gallery-track {
   list-style: none;
   margin: 0;
   padding: 0;
+  min-width: 0;
+  flex: 1;
+}
+
+.browser-shot {
+  height: 100%;
 }
 
 .browser-shot img {
@@ -472,36 +491,60 @@ h1 em {
 .gallery-phone {
   background: linear-gradient(180deg, #e4f6f9 0%, #f7fcfd 100%);
   border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
 }
 
 .gallery-phone .gallery-track {
   display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: 18px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+  overflow: hidden;
   padding: 16px 18px 14px;
-  scrollbar-width: thin;
-  scrollbar-color: #b7d0d6 transparent;
-}
-
-.gallery-phone .gallery-track::-webkit-scrollbar {
-  height: 8px;
-}
-
-.gallery-phone .gallery-track::-webkit-scrollbar-thumb {
-  background: #b7d0d6;
-  border-radius: 99px;
-}
-
-.gallery-phone .gallery-track:focus-visible {
-  outline-offset: -4px;
 }
 
 .gallery-phone .gallery-track li {
-  flex: 0 0 210px;
-  scroll-snap-align: start;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 168px;
+}
+
+.gallery-nav {
+  display: none;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  transform: translateY(-50%);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--ink);
+  padding: 0;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(8, 40, 48, 0.12);
+}
+
+.gallery-nav svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.gallery-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.gallery-prev {
+  left: 8px;
+}
+
+.gallery-next {
+  right: 8px;
 }
 
 .phone-frame {
@@ -532,6 +575,14 @@ h1 em {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  container-type: inline-size;
+  container-name: app-card;
+}
+
+.card .gallery {
+  flex: none;
+  height: 280px;
+  overflow: hidden;
 }
 
 .card .gallery-browser {
@@ -539,12 +590,81 @@ h1 em {
   box-shadow: none;
 }
 
+.card .gallery-viewport {
+  height: 100%;
+  min-height: 0;
+}
+
+.card .browser-shot {
+  height: 100%;
+}
+
+.card .browser-shot img {
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.card .gallery-phone .gallery-track {
+  height: 100%;
+  align-items: flex-end;
+}
+
+.card .gallery-phone .gallery-track li {
+  flex: 0 0 auto;
+  height: 100%;
+  width: auto;
+  max-width: none;
+}
+
+.card .phone-frame {
+  height: 100%;
+  width: auto;
+  display: flex;
+}
+
+.card .phone-frame img {
+  width: auto;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+}
+
+@container app-card (max-width: 440px) {
+  .gallery-phone.is-scrollable .gallery-track {
+    justify-content: flex-start;
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    padding-inline: 44px 16px;
+    scrollbar-width: none;
+  }
+
+  .gallery-phone.is-scrollable .gallery-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-phone.is-scrollable .gallery-track:focus-visible {
+    outline-offset: -4px;
+  }
+
+  .gallery-phone.is-scrollable .gallery-track li {
+    scroll-snap-align: start;
+  }
+
+  .gallery-phone.is-scrollable .gallery-nav {
+    display: grid;
+  }
+}
+
 .card-body {
   display: flex;
   flex-direction: column;
+  flex: 1 0 auto;
   gap: 10px;
   padding: 16px 22px 22px;
-  flex: 1;
 }
 
 .card-head {
@@ -587,10 +707,10 @@ h1 em {
 .play-badge img {
   /* The official asset includes transparent padding, so the image box is
      taller than the badge artwork. These heights put the artwork at about
-     70px on pages and 48px on cards. */
-  height: 104px;
+     56px on pages and 48px on cards. */
+  height: 84px;
   width: auto;
-  margin-block: -16px;
+  margin-block: -12px;
 }
 
 .play-badge-card img {
@@ -783,21 +903,28 @@ textarea:user-invalid,
 .site-footer {
   background: var(--black);
   color: #c5d5d8;
-  padding: 28px 0;
+  padding: 40px 0 24px;
 }
 
-.footer-bar {
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(160px, 1.15fr) repeat(4, minmax(0, 1fr));
+  gap: 28px 24px;
+  margin-bottom: 28px;
+  align-items: start;
+}
+
+.footer-brand-block {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 14px 28px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
 }
 
 .footer-brand {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-right: auto;
   color: white;
   font-family: var(--font-display);
   font-weight: 800;
@@ -810,21 +937,48 @@ textarea:user-invalid,
   border-radius: 10px;
 }
 
-.footer-nav {
+.footer-heading {
+  display: block;
+  margin: 0 0 10px;
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+a.footer-heading:hover {
+  color: #e7f7fb;
+  text-decoration: underline;
+}
+
+.footer-col ul,
+.footer-col .doc-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
+  flex-direction: column;
   gap: 6px;
 }
 
-.footer-nav a,
+.footer-col a,
 .footer-email {
   color: #e7f7fb;
   text-decoration: none;
   font-weight: 600;
-  padding: 0.35rem 0.2rem;
+  font-size: 0.92rem;
 }
 
-.footer-nav a:hover,
+.footer-col a:hover,
 .footer-email:hover {
+  text-decoration: underline;
+}
+
+.footer-col .doc-links a[aria-current="page"] {
+  color: white;
   text-decoration: underline;
 }
 
@@ -856,10 +1010,16 @@ textarea:user-invalid,
 
 .footer-copy {
   margin: 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .page-intro {
-  padding: 48px 0 12px;
+  padding: 36px 0 0;
+}
+
+.page-intro .container {
+  max-width: 46rem;
 }
 
 .page-intro h1 {
@@ -867,45 +1027,96 @@ textarea:user-invalid,
   font-size: clamp(2.2rem, 4vw, 3.4rem);
 }
 
-.crumbs {
-  display: flex;
-  flex-wrap: wrap;
+.app-back {
+  display: inline-flex;
+  align-items: center;
   gap: 8px;
-  margin-bottom: 16px;
   color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.crumbs a {
-  color: var(--muted);
+  font-weight: 600;
   text-decoration: none;
 }
 
-.crumbs a:hover {
+.app-back::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.app-back:hover {
+  color: var(--ink);
   text-decoration: underline;
 }
 
-.doc-nav {
+.doc-links ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 20px 0 8px;
+  gap: 0.35rem 0.15rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.doc-nav a {
-  text-decoration: none;
-  border: 1px solid var(--line);
-  background: white;
-  border-radius: 999px;
-  padding: 0.4rem 0.8rem;
+.doc-links li:not(:last-child)::after {
+  content: "·";
+  margin-left: 0.55rem;
+  margin-right: 0.4rem;
+  color: var(--muted);
+}
+
+.doc-links a {
+  color: var(--muted);
   font-weight: 600;
-  color: var(--ink);
+  text-decoration: none;
 }
 
-.doc-nav a[aria-current="page"] {
-  background: var(--teal-deep);
+.doc-links a:hover,
+.doc-links a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.footer-col .doc-links a {
+  color: #e7f7fb;
+}
+
+.footer-col .doc-links a:hover,
+.footer-col .doc-links a[aria-current="page"] {
   color: white;
-  border-color: var(--teal-deep);
+}
+
+.footer-col .doc-links li:not(:last-child)::after {
+  content: none;
+  margin: 0;
+}
+
+.contact-cta {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: clamp(24px, 4vw, 44px);
+  box-shadow: var(--shadow);
+}
+
+.contact-cta p {
+  margin-top: 12px;
+  max-width: 40rem;
+  color: var(--muted);
+}
+
+.app-shots {
+  margin-top: 36px;
+  max-width: 40rem;
+  border-radius: 20px;
+  overflow: hidden;
+  container-type: inline-size;
+  container-name: app-card;
+}
+
+.app-shots .gallery-phone {
+  border-bottom: 0;
 }
 
 .prose {
@@ -1021,7 +1232,19 @@ textarea:user-invalid,
 }
 
 .promo-phones {
-  display: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+  margin-bottom: 28px;
+}
+
+.promo-phones img {
+  width: 30%;
+  max-width: 160px;
+  height: auto;
+  border-radius: 14px;
 }
 
 .promo-heading {
@@ -1032,7 +1255,7 @@ textarea:user-invalid,
 .promo-list {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 22px;
   list-style: none;
   margin: 8px 0 0;
   padding: 0;
@@ -1041,13 +1264,7 @@ textarea:user-invalid,
 .promo-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-
-.promo-shot {
-  width: min(260px, 78%);
-  height: auto;
+  gap: 8px;
 }
 
 .promo-copy {
@@ -1093,26 +1310,24 @@ textarea:user-invalid,
   }
 
   .promo-phones {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 12px;
-    min-width: 0;
+    margin-bottom: 0;
   }
 
   .promo-phones img {
     width: 31%;
-    height: auto;
-  }
-
-  .promo-shot {
-    display: none;
+    max-width: none;
   }
 }
 
 .narrow {
   max-width: 40rem;
   padding-bottom: 72px;
+}
+
+@media (max-width: 1100px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1144,7 +1359,7 @@ textarea:user-invalid,
     flex-direction: column;
     align-items: stretch;
     padding: 12px 16px 20px;
-    background: rgba(243, 251, 252, 0.98);
+    background: var(--bg);
     border-bottom: 1px solid var(--line);
   }
 
@@ -1164,7 +1379,8 @@ textarea:user-invalid,
 
   .contact-form,
   .app-grid,
-  .values {
+  .values,
+  .footer-grid {
     grid-template-columns: 1fr;
   }
 
